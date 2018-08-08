@@ -1,0 +1,34 @@
+﻿{
+  "setting": {
+    "s1": {
+      "type": "string",
+      "lan": "xxx"
+    },
+    "s2": {
+      "type": "string",
+      "lan": "xxx"
+    },
+    "s3": {
+      "type": "string",
+      "lan": "xxx"
+    },
+    "s4": {
+      "type": "string",
+      "lan": "xxx"
+    },
+    "custom": {
+      "c1": {
+        "type": "string",
+        "lan": "xxx"
+      },
+      "c2": {
+        "type": "string",
+        "lan": "xxx"
+      },
+      "c3": {
+        "type": "string",
+        "lan": "xxx"
+      },
+    }
+  }
+}

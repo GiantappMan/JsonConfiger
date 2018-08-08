@@ -17,6 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.WPF", "Sample.WPF\Sa
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		JsonConfiger\JsonConfiger.projitems*{74b6d621-6947-40b9-8dcb-a2e3548d7fdc}*SharedItemsImports = 4
 		JsonConfiger\JsonConfiger.projitems*{9ab9f914-e00e-41d2-ab19-ec140a0fa889}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

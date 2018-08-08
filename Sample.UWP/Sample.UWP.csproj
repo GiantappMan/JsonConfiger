@@ -104,6 +104,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="..\Sample.WPF\Data\test.json">
+      <Link>Data\test.json</Link>
+    </None>
     <None Include="Sample.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

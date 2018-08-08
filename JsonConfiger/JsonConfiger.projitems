@@ -9,5 +9,11 @@
     <Import_RootNamespace>JsonConfiger</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)JCrService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NodeObj.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NodeProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\JsonConfierViewModel.cs" />
   </ItemGroup>
 </Project>

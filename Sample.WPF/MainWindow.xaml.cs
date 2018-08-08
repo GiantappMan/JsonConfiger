@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JsonConfiger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace Sample.WPF
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            JCrService service = new JCrService();
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
+            var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
+            UserControl control = service.GetControl(data);
+
+            grid.Children.Add(control);
         }
     }
 }

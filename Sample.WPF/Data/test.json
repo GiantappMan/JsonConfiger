@@ -1,0 +1,13 @@
+﻿{
+  "setting": {
+    "s1": 1,
+    "s2": 1.1,
+    "s3": "string",
+    "s4": true,
+    "custom": {
+      "c1": 1,
+      "c2": "string",
+      "c3": "xxx"
+    }
+  }
+}
