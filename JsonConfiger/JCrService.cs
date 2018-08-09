@@ -19,9 +19,6 @@ namespace JsonConfiger
             if (data != null)
                 foreach (var x in data)
                 {
-                    var node = new NodeObj();
-                    node.Name = x.Key;
-
                     if (x.Value is JValue)
                     {
                         var value = x.Value as JValue;
@@ -32,9 +29,12 @@ namespace JsonConfiger
                         }
                     }
                     else
+                    {
+                        var node = new NodeObj();
+                        node.Name = x.Key;
                         node.Children = ResolveJson(x.Value as JObject);
-
-                    result.Add(node);
+                        result.Add(node);
+                    }
                 }
 
             return result;

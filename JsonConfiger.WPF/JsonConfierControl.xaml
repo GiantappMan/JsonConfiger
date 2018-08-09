@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TreeView ItemsSource="{Binding Nodes, Mode=OneWay}">
+        <TreeView x:Name="tree" ItemsSource="{Binding Nodes, Mode=OneWay}">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="IsExpanded" Value="True" />
@@ -26,5 +26,6 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
+        <ContentControl Grid.Column="1" Content="{Binding ElementName=tree, Path=SelectedItem, Mode=OneWay}" />
     </Grid>
 </UserControl>
