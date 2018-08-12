@@ -9,6 +9,14 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Editors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <local:TemplateSelector x:Key="TemplateSelector" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -26,6 +34,9 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
-        <ContentControl Grid.Column="1" Content="{Binding ElementName=tree, Path=SelectedItem, Mode=OneWay}" />
+        <ContentControl
+            Grid.Column="1"
+            Content="{Binding ElementName=tree, Path=SelectedItem, Mode=OneWay}"
+            ContentTemplateSelector="{StaticResource TemplateSelector}" />
     </Grid>
 </UserControl>

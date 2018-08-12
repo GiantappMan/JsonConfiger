@@ -65,6 +65,5 @@ namespace JsonConfiger.Models
 
         #endregion
 
-
     }
 }
