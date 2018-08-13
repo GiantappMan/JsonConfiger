@@ -4,9 +4,9 @@ using System.Text;
 
 namespace JsonConfiger.Models
 {
-   public class NodeDescription
+    public class CPropertyPDescription
     {
-        public NodeType NodeType { get; set; }
+        public CPropertyType CPropertyType { get; set; }
 
         public string Lan { get; set; }
     }

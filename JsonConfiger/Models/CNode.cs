@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JsonConfiger.Models
 {
-    public class NodeObj : ObservableObject
+    public class CNode : ObservableObject
     {
         #region properties
 
@@ -43,12 +43,12 @@ namespace JsonConfiger.Models
         /// </summary>
         public const string ChildrenPropertyName = "Children";
 
-        private ObservableCollection<NodeObj> _Children;
+        private ObservableCollection<CNode> _Children;
 
         /// <summary>
         /// Children
         /// </summary>
-        public ObservableCollection<NodeObj> Children
+        public ObservableCollection<CNode> Children
         {
             get { return _Children; }
 
@@ -63,7 +63,33 @@ namespace JsonConfiger.Models
 
         #endregion
 
+        #region Properties
+
+        /// <summary>
+        /// The <see cref="Properties" /> property's name.
+        /// </summary>
+        public const string PropertiesPropertyName = "Properties";
+
+        private ObservableCollection<CProperty> _Properties;
+
+        /// <summary>
+        /// Properties
+        /// </summary>
+        public ObservableCollection<CProperty> Properties
+        {
+            get { return _Properties; }
+
+            set
+            {
+                if (_Properties == value) return;
+
+                _Properties = value;
+                NotifyOfPropertyChange(PropertiesPropertyName);
+            }
+        }
+
         #endregion
 
+        #endregion
     }
 }

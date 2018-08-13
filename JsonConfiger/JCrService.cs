@@ -12,9 +12,10 @@ namespace JsonConfiger
 {
     public class JCrService
     {
-        private ObservableCollection<NodeObj> ResolveJson(JObject data)
+        private (ObservableCollection<CNode> Nodes, ObservableCollection<CProperty> Properties) ResolveJson(JObject data)
         {
-            var result = new ObservableCollection<NodeObj>();
+            var childNodes = new ObservableCollection<CNode>();
+            var properties = new ObservableCollection<CProperty>();
 
             if (data != null)
                 foreach (var x in data)
@@ -22,21 +23,36 @@ namespace JsonConfiger
                     if (x.Value is JValue)
                     {
                         var value = x.Value as JValue;
-                        switch (value.Type)
-                        {
-                            case JTokenType.String:
-                                break;
-                        }
+                        CProperty property = ConverterToNodeProperty(value);
+                        property.Name = x.Key;
+                        if (property != null)
+                            properties.Add(property);
                     }
                     else
                     {
-                        var node = new NodeObj();
+                        var node = new CNode();
                         node.Name = x.Key;
-                        node.Children = ResolveJson(x.Value as JObject);
-                        result.Add(node);
+                        node.Children = ResolveJson(x.Value as JObject).Nodes;
+                        node.Properties = properties;
+                        childNodes.Add(node);
                     }
                 }
 
+            return (childNodes, properties);
+        }
+
+        private CProperty ConverterToNodeProperty(JValue value)
+        {
+            if (value == null)
+                return null;
+
+            CProperty result = new CProperty();
+            result.Value = value.Value;
+            bool ok = Enum.TryParse<CPropertyType>(value.Type.ToString(), out CPropertyType Type);
+            if (!ok)
+                return null;
+
+            result.CType = Type;
             return result;
         }
 
@@ -47,7 +63,7 @@ namespace JsonConfiger
                 return null;
 
             var vm = new JsonConfierViewModel();
-            vm.Nodes = ResolveJson(data as JObject);
+            vm.Nodes = ResolveJson(data as JObject).Nodes;
             var control = new JsonConfierControl();
             control.DataContext = vm;
             return control;

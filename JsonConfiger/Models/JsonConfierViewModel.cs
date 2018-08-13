@@ -16,12 +16,12 @@ namespace JsonConfiger.Models
         /// </summary>
         public const string NodesPropertyName = "Nodes";
 
-        private ObservableCollection<NodeObj> _Nodes;
+        private ObservableCollection<CNode> _Nodes;
 
         /// <summary>
         /// Nodes
         /// </summary>
-        public ObservableCollection<NodeObj> Nodes
+        public ObservableCollection<CNode> Nodes
         {
             get { return _Nodes; }
 

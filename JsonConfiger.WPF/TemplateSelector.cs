@@ -13,7 +13,7 @@ namespace JsonConfiger.WPF
     {
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var nodeObj = item as NodeObj;
+            var nodeObj = item as CNode;
             if (nodeObj == null)
                 return null;
 

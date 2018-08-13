@@ -29,7 +29,7 @@
                 </Style>
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type models:NodeObj}" ItemsSource="{Binding Children}">
+                <HierarchicalDataTemplate DataType="{x:Type models:CNode}" ItemsSource="{Binding Children}">
                     <TextBlock Text="{Binding Name}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
