@@ -32,8 +32,9 @@ namespace JsonConfiger
                     {
                         var node = new CNode();
                         node.Name = x.Key;
-                        node.Children = ResolveJson(x.Value as JObject).Nodes;
-                        node.Properties = properties;
+                        var r = ResolveJson(x.Value as JObject);
+                        node.Children = r.Nodes;
+                        node.Properties = r.Properties;
                         childNodes.Add(node);
                     }
                 }

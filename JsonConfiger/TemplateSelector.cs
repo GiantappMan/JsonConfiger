@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace JsonConfiger.WPF
+namespace JsonConfiger
 {
     class TemplateSelector : DataTemplateSelector
     {
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var nodeObj = item as CNode;
-            if (nodeObj == null)
+            var cp = item as CProperty;
+            if (cp == null)
                 return null;
 
-            return base.SelectTemplate(item, container);
+            string key = $"{cp.CType.ToString()}Editor";
+            var template = ((FrameworkElement)container).FindResource(key) as DataTemplate;
+            return template;
         }
     }
 }

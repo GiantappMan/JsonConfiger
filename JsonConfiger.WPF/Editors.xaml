@@ -1,7 +1,13 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                   >
-    <DataTemplate x:Key="StringEditor">
-        
-    </DataTemplate>
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:JsonConfiger">
+    <local:TemplateSelector x:Key="TemplateSelector" />
+    <DataTemplate x:Key="StringEditor" />
+
+    <DataTemplate x:Key="IntegerEditor" />
+
+    <DataTemplate x:Key="FloatEditor" />
+
+    <DataTemplate x:Key="BooleanEditor" />
 </ResourceDictionary>

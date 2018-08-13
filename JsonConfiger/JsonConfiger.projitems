@@ -16,5 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\CProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\JsonConfierViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelector.cs" />
   </ItemGroup>
 </Project>

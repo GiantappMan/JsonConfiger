@@ -14,7 +14,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Editors.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <local:TemplateSelector x:Key="TemplateSelector" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -34,9 +33,9 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
-        <ContentControl
+        <ListBox
             Grid.Column="1"
-            Content="{Binding ElementName=tree, Path=SelectedItem, Mode=OneWay}"
-            ContentTemplateSelector="{StaticResource TemplateSelector}" />
+            ItemTemplateSelector="{StaticResource TemplateSelector}"
+            ItemsSource="{Binding ElementName=tree, Path=SelectedItem.Properties, Mode=OneWay}" />
     </Grid>
 </UserControl>
