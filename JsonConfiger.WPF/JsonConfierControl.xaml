@@ -35,6 +35,7 @@
         </TreeView>
         <ListBox
             Grid.Column="1"
+            HorizontalContentAlignment="Stretch"
             ItemTemplateSelector="{StaticResource TemplateSelector}"
             ItemsSource="{Binding ElementName=tree, Path=SelectedItem.Properties, Mode=OneWay}" />
     </Grid>
