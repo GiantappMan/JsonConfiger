@@ -33,7 +33,7 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
-        <ListBox
+        <ItemsControl
             Grid.Column="1"
             HorizontalContentAlignment="Stretch"
             ItemTemplateSelector="{StaticResource TemplateSelector}"

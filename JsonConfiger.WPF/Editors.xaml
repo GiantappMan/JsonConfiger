@@ -10,17 +10,65 @@
                 <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Name}" />
+            <TextBlock Text="{Binding Name}">
+                <Run Text=":" />
+            </TextBlock>
             <TextBox
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
     </DataTemplate>
 
-    <DataTemplate x:Key="IntegerEditor" />
+    <DataTemplate x:Key="IntegerEditor">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}">
+                <Run Text=":" />
+            </TextBlock>
+            <TextBox
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
 
-    <DataTemplate x:Key="FloatEditor" />
+    <DataTemplate x:Key="FloatEditor">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}">
+                <Run Text=":" />
+            </TextBlock>
+            <TextBox
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
 
-    <DataTemplate x:Key="BooleanEditor" />
+    <DataTemplate x:Key="BooleanEditor">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}">
+                <Run Text=":" />
+            </TextBlock>
+            <CheckBox
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>
