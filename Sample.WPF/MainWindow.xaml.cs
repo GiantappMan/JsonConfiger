@@ -1,4 +1,5 @@
 ﻿using JsonConfiger;
+using JsonConfiger.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,12 @@ namespace Sample.WPF
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
             UserControl control = service.GetControl(data);
 
-            grid.Children.Add(control);
+            grid.Children.Insert(0, control);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            grid.Children.RemoveAt(0);
         }
     }
 }
