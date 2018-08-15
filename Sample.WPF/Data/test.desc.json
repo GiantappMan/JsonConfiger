@@ -1,7 +1,7 @@
 ﻿{
   "setting": {
     "s1": {
-      "type": "string",
+      "type": "Boolean",
       "lan": "xxx"
     },
     "s2": {

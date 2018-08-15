@@ -17,19 +17,28 @@ namespace JsonConfiger
         {
             var childNodes = new ObservableCollection<CNode>();
             var properties = new ObservableCollection<CProperty>();
-
+            dynamic descInfo = null;
             //var descList = descObj as ICollection<KeyValuePair<string, JToken>>;
             if (data != null)
                 foreach (var x in data)
-                //for (int i = 0; i < data.Count; i++)
                 {
-                    var descX = descObj[x.Key];
-                    //dynamic x = data[i];
                     if (x.Value is JValue)
                     {
                         var value = x.Value as JValue;
                         CProperty property = ConverterToNodeProperty(value);
-                        property.Name = x.Key;
+                        if (descObj != null)
+                        {
+                            descInfo = descObj[x.Key];
+
+                            bool ok = Enum.TryParse(descInfo.type.ToString(), out CPropertyType cType);
+                            if (ok)
+                                property.CType = cType;
+
+                            property.Name = descInfo.lan;
+                        }
+                        else
+                            property.Name = x.Key;
+
                         if (property != null)
                             properties.Add(property);
                     }
@@ -37,7 +46,7 @@ namespace JsonConfiger
                     {
                         var node = new CNode();
                         node.Name = x.Key;
-                        var r = ResolveJson(x.Value as JObject, descX as JObject);
+                        var r = ResolveJson(x.Value as JObject, descInfo as JObject);
                         node.Children = r.Nodes;
                         node.Properties = r.Properties;
                         childNodes.Add(node);

@@ -38,6 +38,7 @@ namespace Sample.WPF
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
             var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
             control = service.GetView(data, dataDesc);
+            //control = service.GetView(data, null);
 
             grid.Children.Insert(0, control);
         }
