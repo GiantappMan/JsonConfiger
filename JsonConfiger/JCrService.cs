@@ -58,16 +58,21 @@ namespace JsonConfiger
             return result;
         }
 
-        public UserControl GetControl(object data)
+        public JsonConfierViewModel GetVM(object config)
         {
-            var json = data as JObject;
+            var json = config as JObject;
             if (json == null)
                 return null;
 
             var vm = new JsonConfierViewModel();
-            vm.Nodes = ResolveJson(data as JObject).Nodes;
+            vm.Nodes = ResolveJson(config as JObject).Nodes;
+            return vm;
+        }
+
+        public UserControl GetView(object config)
+        {
             var control = new JsonConfierControl();
-            control.DataContext = vm;
+            control.DataContext = GetVM(config);
             return control;
         }
 
