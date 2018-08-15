@@ -13,14 +13,18 @@ namespace JsonConfiger
 {
     public class JCrService
     {
-        private (ObservableCollection<CNode> Nodes, ObservableCollection<CProperty> Properties) ResolveJson(JObject data)
+        private (ObservableCollection<CNode> Nodes, ObservableCollection<CProperty> Properties) ResolveJson(JObject data, JObject descObj)
         {
             var childNodes = new ObservableCollection<CNode>();
             var properties = new ObservableCollection<CProperty>();
 
+            //var descList = descObj as ICollection<KeyValuePair<string, JToken>>;
             if (data != null)
                 foreach (var x in data)
+                //for (int i = 0; i < data.Count; i++)
                 {
+                    var descX = descObj[x.Key];
+                    //dynamic x = data[i];
                     if (x.Value is JValue)
                     {
                         var value = x.Value as JValue;
@@ -33,7 +37,7 @@ namespace JsonConfiger
                     {
                         var node = new CNode();
                         node.Name = x.Key;
-                        var r = ResolveJson(x.Value as JObject);
+                        var r = ResolveJson(x.Value as JObject, descX as JObject);
                         node.Children = r.Nodes;
                         node.Properties = r.Properties;
                         childNodes.Add(node);
@@ -58,21 +62,21 @@ namespace JsonConfiger
             return result;
         }
 
-        public JsonConfierViewModel GetVM(object config)
+        public JsonConfierViewModel GetVM(object config, object descConfig)
         {
             var json = config as JObject;
             if (json == null)
                 return null;
 
             var vm = new JsonConfierViewModel();
-            vm.Nodes = ResolveJson(config as JObject).Nodes;
+            vm.Nodes = ResolveJson(config as JObject, descConfig as JObject).Nodes;
             return vm;
         }
 
-        public UserControl GetView(object config)
+        public UserControl GetView(object config, object desc)
         {
             var control = new JsonConfierControl();
-            control.DataContext = GetVM(config);
+            control.DataContext = GetVM(config, desc);
             return control;
         }
 

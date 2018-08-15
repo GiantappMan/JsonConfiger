@@ -26,6 +26,7 @@ namespace Sample.WPF
         JCrService service = new JCrService();
         UserControl control;
         string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
+        string descPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.desc.json");
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +36,8 @@ namespace Sample.WPF
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
-            control = service.GetView(data);
+            var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
+            control = service.GetView(data, dataDesc);
 
             grid.Children.Insert(0, control);
         }
