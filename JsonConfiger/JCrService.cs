@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Windows.Controls;
@@ -49,7 +50,7 @@ namespace JsonConfiger
 
             CProperty result = new CProperty();
             result.Value = value.Value;
-            bool ok = Enum.TryParse<CPropertyType>(value.Type.ToString(), out CPropertyType Type);
+            bool ok = Enum.TryParse(value.Type.ToString(), out CPropertyType Type);
             if (!ok)
                 return null;
 
@@ -68,6 +69,33 @@ namespace JsonConfiger
             var control = new JsonConfierControl();
             control.DataContext = vm;
             return control;
+        }
+
+        public Object GetData(ObservableCollection<CNode> nodes)
+        {
+            var result = new ExpandoObject() as IDictionary<string, Object>;
+            foreach (var nodeItem in nodes)
+            {
+                var tempNodeObj = GetDataFromNode(nodeItem);
+
+                foreach (var subNode in nodeItem.Children)
+                {
+                    var subNodeObj = GetDataFromNode(subNode);
+                    tempNodeObj.Add(subNode.Name, subNodeObj);
+                }
+                result.Add(nodeItem.Name, tempNodeObj);
+            }
+            return result;
+        }
+
+        private IDictionary<string, Object> GetDataFromNode(CNode nodeItem)
+        {
+            var tempNodeObj = new ExpandoObject() as IDictionary<string, Object>;
+            foreach (var propertyItem in nodeItem.Properties)
+            {
+                tempNodeObj.Add(propertyItem.Name, propertyItem.Value);
+            }
+            return tempNodeObj;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using JsonConfiger;
+using JsonConfiger.Models;
 using JsonConfiger.Utils;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ namespace Sample.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        JCrService service = new JCrService();
+        UserControl control;
+        string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
         public MainWindow()
         {
             InitializeComponent();
@@ -30,17 +34,18 @@ namespace Sample.WPF
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            JCrService service = new JCrService();
-            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
-            UserControl control = service.GetControl(data);
+            control = service.GetControl(data);
 
             grid.Children.Insert(0, control);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            grid.Children.RemoveAt(0);
+            var vm = control.DataContext as JsonConfierViewModel;
+            var data = service.GetData(vm.Nodes);
+            await JsonHelper.JsonSerializeAsync(data, path);
+            //grid.Children.RemoveAt(0);
         }
     }
 }
