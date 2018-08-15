@@ -73,19 +73,11 @@
     </DataTemplate>
 
     <DataTemplate x:Key="BooleanEditor">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Name}">
-                <Run Text=":" />
-            </TextBlock>
-            <CheckBox
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        </Grid>
+        <CheckBox
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Content="{Binding Name}"
+            IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>
 </ResourceDictionary>
