@@ -34,11 +34,10 @@ namespace JsonConfiger
                             if (ok)
                                 property.CType = cType;
 
-                            property.Name = descInfo.lan;
+                            property.Lan = descInfo.lan;
                         }
 
-                        if (string.IsNullOrEmpty(property.Name))
-                            property.Name = x.Key;
+                        property.Name = x.Key;
 
                         if (property != null)
                             properties.Add(property);
@@ -47,10 +46,9 @@ namespace JsonConfiger
                     {
                         var node = new CNode();
                         if (descInfo != null)
-                            node.Name = descInfo.lan;
+                            node.Lan = descInfo.lan;
 
-                        if (string.IsNullOrEmpty(node.Name))
-                            node.Name = x.Key;
+                        node.Name = x.Key;
 
                         var r = ResolveJson(x.Value as JObject, descInfo as JObject);
                         node.Children = r.Nodes;

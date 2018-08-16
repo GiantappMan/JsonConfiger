@@ -42,6 +42,33 @@ namespace JsonConfiger.Models
 
         #endregion
 
+        #region Lan
+
+        /// <summary>
+        /// The <see cref="Lan" /> property's name.
+        /// </summary>
+        public const string LanPropertyName = "Lan";
+
+        private string _Lan;
+
+        /// <summary>
+        /// Lan
+        /// </summary>
+        public string Lan
+        {
+            get { return _Lan; }
+
+            set
+            {
+                if (_Lan == value) return;
+
+                _Lan = value;
+                NotifyOfPropertyChange(LanPropertyName);
+            }
+        }
+
+        #endregion
+
         #region CType
 
         /// <summary>
