@@ -80,4 +80,29 @@
             Content="{Binding Name}"
             IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>
+
+    <DataTemplate x:Key="TimeSpanEditor">
+        <Grid Margin="0,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}">
+                <Run Text=":" />
+            </TextBlock>
+            <TextBox
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center">
+                <Binding
+                    Mode="TwoWay"
+                    Path="Value"
+                    UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <rules:TextBoxValidationRule LimitType="TimeSpan" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>

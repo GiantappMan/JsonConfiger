@@ -13,6 +13,7 @@ namespace JsonConfiger.WPF.ValidationRules
     {
         Interget,
         Float,
+        TimeSpan
     }
 
     public class TextBoxValidationRule : ValidationRule
@@ -31,14 +32,19 @@ namespace JsonConfiger.WPF.ValidationRules
             switch (LimitType)
             {
                 case LimitType.Interget:
-                    string onlyNumeric = @"^(\d+)$";
-                    Regex regex = new Regex(onlyNumeric);
+                    string pattern = @"^(\d+)$";
+                    Regex regex = new Regex(pattern);
                     result = regex.IsMatch(text);
                     break;
 
                 case LimitType.Float:
-                    onlyNumeric = @"^([0-9]+(.[0-9]+)?)$";
-                    regex = new Regex(onlyNumeric);
+                    pattern = @"^([0-9]+(.[0-9]+)?)$";
+                    regex = new Regex(pattern);
+                    result = regex.IsMatch(text);
+                    break;
+                case LimitType.TimeSpan:
+                    pattern = @"^(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9]))$";
+                    regex = new Regex(pattern);
                     result = regex.IsMatch(text);
                     break;
             }

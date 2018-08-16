@@ -2,6 +2,7 @@
   "setting": {
     "s1": 1,
     "s2": 1.1,
+    "ts": "00:45:00",
     "s3": "string",
     "s4": true,
     "custom": {

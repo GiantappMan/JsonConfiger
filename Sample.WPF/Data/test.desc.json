@@ -16,6 +16,10 @@
       "type": "string",
       "lan": "xxx"
     },
+    "ts": {
+      "type": "timespan",
+      "lan": "ts"
+    },
     "custom": {
       "c1": {
         "type": "string",
@@ -28,7 +32,7 @@
       "c3": {
         "type": "string",
         "lan": "xxx"
-      },
+      }
     }
   }
 }

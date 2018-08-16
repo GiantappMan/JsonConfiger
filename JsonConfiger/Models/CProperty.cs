@@ -10,6 +10,7 @@ namespace JsonConfiger.Models
         Float,
         String,
         Boolean,
+        TimeSpan
     }
 
     public class CProperty : ObservableObject
