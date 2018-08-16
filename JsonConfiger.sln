@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.UWP", "Sample.UWP\Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.WPF", "Sample.WPF\Sample.WPF.csproj", "{0FC5D62A-8D6C-4712-9100-863311FD1DF4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{34D1D031-152D-4078-8E4A-A46CA3F1D6A8}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\JsonConfiger.nuspec = NuGet\JsonConfiger.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		JsonConfiger\JsonConfiger.projitems*{74b6d621-6947-40b9-8dcb-a2e3548d7fdc}*SharedItemsImports = 4

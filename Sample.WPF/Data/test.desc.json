@@ -1,5 +1,6 @@
 ﻿{
   "setting": {
+    "lan": "设置",
     "s1": {
       "type": "Boolean",
       "lan": "xxx"

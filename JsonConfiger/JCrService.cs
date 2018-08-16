@@ -36,7 +36,8 @@ namespace JsonConfiger
 
                             property.Name = descInfo.lan;
                         }
-                        else
+
+                        if (string.IsNullOrEmpty(property.Name))
                             property.Name = x.Key;
 
                         if (property != null)
@@ -45,7 +46,12 @@ namespace JsonConfiger
                     else
                     {
                         var node = new CNode();
-                        node.Name = x.Key;
+                        if (descInfo != null)
+                            node.Name = descInfo.lan;
+
+                        if (string.IsNullOrEmpty(node.Name))
+                            node.Name = x.Key;
+
                         var r = ResolveJson(x.Value as JObject, descInfo as JObject);
                         node.Children = r.Nodes;
                         node.Properties = r.Properties;
