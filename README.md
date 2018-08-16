@@ -35,5 +35,5 @@ if (config == null)
     string defaultConfigPath = Path.Combine(Environment.CurrentDirectory, "Configs\\default_config.json");
     config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(defaultConfigPath);
 }
-JsonConfierViewModel = service.GetVM(config); 
+JsonConfierViewModel = service.GetVM(config,null); 
  ```
