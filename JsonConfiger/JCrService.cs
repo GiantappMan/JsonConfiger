@@ -28,6 +28,8 @@ namespace JsonConfiger
                     {
                         var value = x.Value as JValue;
                         CProperty property = ConverterToNodeProperty(value);
+                        if (property == null)
+                            continue;
                         if (descInfo != null)
                         {
                             bool ok = Enum.TryParse(descInfo.type.ToString(), true, out CPropertyType cType);

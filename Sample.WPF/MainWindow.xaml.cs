@@ -35,6 +35,8 @@ namespace Sample.WPF
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //path = @"C:\Users\zy\AppData\Roaming\EyeNurse\Configs\setting.json";
+            //descPath = @"E:\mscoder\github\EyeNurse\EyeNurse.Client\bin\Debug\Configs\setting.desc.json";
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
             var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
             control = service.GetView(data, dataDesc);
