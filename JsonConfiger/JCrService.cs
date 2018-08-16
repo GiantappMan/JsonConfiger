@@ -22,12 +22,13 @@ namespace JsonConfiger
             if (data != null)
                 foreach (var x in data)
                 {
-                    descInfo = descObj[x.Key];
+                    if (descObj != null)
+                        descInfo = descObj[x.Key];
                     if (x.Value is JValue)
                     {
                         var value = x.Value as JValue;
                         CProperty property = ConverterToNodeProperty(value);
-                        if (descObj != null)
+                        if (descInfo != null)
                         {
                             bool ok = Enum.TryParse(descInfo.type.ToString(), true, out CPropertyType cType);
                             if (ok)
