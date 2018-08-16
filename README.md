@@ -28,11 +28,12 @@
  
  * **ViewModel**
  ```csharp
-var config = await ConfigHelper.LoadConfigAsync<dynamic>();
+JCrService service = new JCrService();
+var config = await ToDo.LoadConfigAsync<dynamic>(configPath);
 if (config == null)
 {
-    string defaultConfig = Path.Combine(Environment.CurrentDirectory, "Configs\\default_config.json");
-    config = await ConfigHelper.LoadConfigAsync<dynamic>(defaultConfig);
+    string defaultConfigPath = Path.Combine(Environment.CurrentDirectory, "Configs\\default_config.json");
+    config = await ToDo.LoadConfigAsync<dynamic>(defaultConfigPath);
 }
 JsonConfierViewModel = service.GetVM(config); 
  ```
