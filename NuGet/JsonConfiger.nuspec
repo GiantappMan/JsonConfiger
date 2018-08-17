@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>JsonConfiger</id>
-        <version>1.0.0.11</version>
+        <version>1.0.0.12</version>
         <title>JsonConfiger</title>
         <authors>MscoderStudio</authors>
         <owners>MscoderStudio</owners>
@@ -16,6 +16,8 @@
         <tags>UWP WPF JsonConfiger</tags>
         <dependencies>
             <group targetFramework="net46">
+              <dependency id="DZY.DotNetUtil" version="1.0.0" />
+              <dependency id="System.ValueTuple" version="4.5.0" />
               <dependency id="Newtonsoft.Json" version="11.0.2" />
             </group>
             <group targetFramework="uap10.0">
