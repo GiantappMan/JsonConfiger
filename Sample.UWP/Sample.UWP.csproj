@@ -104,9 +104,14 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="..\Sample.WPF\Data\test.json">
+    <Content Include="..\Sample.WPF\Data\test.desc.json">
+      <Link>Data\test.desc.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Sample.WPF\Data\test.json">
       <Link>Data\test.json</Link>
-    </None>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Sample.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -131,9 +136,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.5</Version>
+      <Version>6.1.7</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JsonConfiger.UWP\JsonConfiger.UWP.csproj">
+      <Project>{2e4b2f88-77df-4e3f-9bae-fcc610ad3d3d}</Project>
+      <Name>JsonConfiger.UWP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\JsonConfiger\JsonConfiger.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

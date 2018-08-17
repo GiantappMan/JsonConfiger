@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JsonConfiger;
+using JsonConfiger.Models;
+using JsonConfiger.Utils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +25,34 @@ namespace Sample.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        JCrService service = new JCrService();
+        UserControl control;
+        string path = System.IO.Path.Combine("Data", "test.json");
+        string descPath = System.IO.Path.Combine("Data", "test.desc.json");
         public MainPage()
         {
+            Loaded += MainWindow_Loaded;
             this.InitializeComponent();
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            //path = @"C:\Users\zy\AppData\Roaming\EyeNurse\Configs\setting.json";
+            //descPath = @"E:\mscoder\github\EyeNurse\EyeNurse.Client\bin\Debug\Configs\setting.desc.json";
+            var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
+            var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
+            control = service.GetView(data, dataDesc);
+            //control = service.GetView(data, null);
+
+            grid.Children.Insert(0, control);
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = control.DataContext as JsonConfierViewModel;
+            var data = service.GetData(vm.Nodes);
+            await JsonHelper.JsonSerializeAsync(data, path);
+            //grid.Children.RemoveAt(0);
         }
     }
 }
