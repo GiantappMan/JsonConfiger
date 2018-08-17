@@ -11,15 +11,10 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)JCrService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NameConveter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\JsonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CPropertyPDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CProperty.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\JsonConfierViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelector.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Utils\" />
   </ItemGroup>
 </Project>
