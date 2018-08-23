@@ -28,12 +28,8 @@
  
  * **ViewModel**
  ```csharp
-JCrService service = new JCrService();
-var config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(configPath);
-if (config == null)
-{
-    string defaultConfigPath = Path.Combine(Environment.CurrentDirectory, "Configs\\default_config.json");
-    config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(defaultConfigPath);
-}
-JsonConfierViewModel = service.GetVM(config,null); 
+            var config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(todo.ConfigFilePath);
+            string descPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Resources\\Configs\\setting.desc.json");
+            var descConfig = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(descPath);
+            JsonConfierViewModel = _jcrService.GetVM(config, descConfig);
  ```
