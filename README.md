@@ -28,8 +28,8 @@
  
  * **ViewModel**
  ```csharp
-            var config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(todo.ConfigFilePath);
-            string descPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Resources\\Configs\\setting.desc.json");
-            var descConfig = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(descPath);
-            JsonConfierViewModel = _jcrService.GetVM(config, descConfig);
+ var config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(todo.ConfigFilePath);
+ string descPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Resources\\Configs\\setting.desc.json");
+ var descConfig = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(descPath);
+ JsonConfierViewModel = _jcrService.GetVM(config, descConfig);
  ```
