@@ -1,6 +1,7 @@
 ﻿using DZY.DotNetUtil.Helpers;
 using JsonConfiger;
 using JsonConfiger.Models;
+using MultiLanguageManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace Sample.WPF
         public MainWindow()
         {
             InitializeComponent();
+
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data\\Languages");
+            LanService.Init(new JsonDB(path), true);
+
             Loaded += MainWindow_Loaded;
         }
 

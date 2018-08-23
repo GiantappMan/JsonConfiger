@@ -70,6 +70,33 @@ namespace JsonConfiger.Models
 
         #endregion
 
+        #region LanKey
+
+        /// <summary>
+        /// The <see cref="LanKey" /> property's name.
+        /// </summary>
+        public const string LanKeyPropertyName = "LanKey";
+
+        private string _LanKey;
+
+        /// <summary>
+        /// 多语言切换用的key
+        /// </summary>
+        public string LanKey
+        {
+            get { return _LanKey; }
+
+            set
+            {
+                if (_LanKey == value) return;
+
+                _LanKey = value;
+                NotifyOfPropertyChange(LanKeyPropertyName);
+            }
+        }
+
+        #endregion
+
         #region CType
 
         /// <summary>

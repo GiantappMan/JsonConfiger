@@ -7,7 +7,7 @@
     },
     "s2": {
       "type": "string",
-      "lan": "xxx"
+      "lanKey": "local_wallpaper"
     },
     "s3": {
       "type": "string",

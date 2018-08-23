@@ -16,12 +16,13 @@
         <tags>UWP WPF JsonConfiger</tags>
         <dependencies>
             <group targetFramework="net46">
-              <dependency id="DZY.DotNetUtil" version="1.0.0" />
+              <dependency id="DZY.DotNetUtil" version="1.0.1" />
               <dependency id="System.ValueTuple" version="4.5.0" />
               <dependency id="Newtonsoft.Json" version="11.0.2" />
             </group>
             <group targetFramework="uap10.0">
               <dependency id="Newtonsoft.Json" version="11.0.2" />
+              <dependency id="DZY.DotNetUtil" version="1.0.1" />
             </group>
         </dependencies>
     </metadata>

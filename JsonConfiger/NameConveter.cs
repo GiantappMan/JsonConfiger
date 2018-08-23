@@ -1,4 +1,5 @@
 ﻿using JsonConfiger.Models;
+using MultiLanguageManager;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,7 +17,7 @@ namespace JsonConfiger
 #if WINDOWS_UWP
         public object Convert(object value, Type targetType, object parameter, string language)
 #else
-            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 #endif
         {
             if (value is CProperty)
@@ -25,6 +26,11 @@ namespace JsonConfiger
                 if (!string.IsNullOrEmpty(cp.Lan))
                     return cp.Lan;
 
+                if (!string.IsNullOrEmpty(cp.LanKey))
+                {
+                    string lan = LanService.Get(cp.LanKey).Result;
+                    return lan;
+                }
                 return cp.Name;
             }
 

@@ -44,6 +44,7 @@ namespace JsonConfiger
                                 property.CType = cType;
 
                             property.Lan = descInfo.lan;
+                            property.LanKey = descInfo.lanKey;
                         }
 
                         property.Name = x.Key;
