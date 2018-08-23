@@ -63,6 +63,7 @@
     <Compile Include="JsonConfierControl.xaml.cs">
       <DependentUpon>JsonConfierControl.xaml</DependentUpon>
     </Compile>
+    <None Include="Properties\AssemblyInfo.tpl" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationRules\TextBoxValidationRule.cs" />
   </ItemGroup>

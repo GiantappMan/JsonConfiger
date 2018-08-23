@@ -109,6 +109,7 @@
     <Compile Include="JsonConfierControl.xaml.cs">
       <DependentUpon>JsonConfierControl.xaml</DependentUpon>
     </Compile>
+    <None Include="Properties\AssemblyInfo.tpl" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\JsonConfiger.UWP.rd.xml" />
   </ItemGroup>
