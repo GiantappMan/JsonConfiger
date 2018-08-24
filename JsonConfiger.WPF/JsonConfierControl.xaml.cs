@@ -24,5 +24,15 @@ namespace JsonConfiger.WPF
         {
             InitializeComponent();
         }
+
+        private void tree_Loaded(object sender, RoutedEventArgs e)
+        {
+            var firstNode = tree.ItemContainerGenerator.ContainerFromIndex(0) as TreeViewItem;
+            if (firstNode == null)
+                return;
+
+            firstNode.IsSelected = true;
+            firstNode.IsExpanded = true;
+        }
     }
 }
