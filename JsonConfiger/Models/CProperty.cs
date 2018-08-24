@@ -11,92 +11,12 @@ namespace JsonConfiger.Models
         Float,
         String,
         Boolean,
-        TimeSpan
+        TimeSpan,
+        Combobox
     }
 
-    public class CProperty : ObservableObject
+    public class CProperty : CBaseObj
     {
-        #region Name
-
-        /// <summary>
-        /// The <see cref="Name" /> property's name.
-        /// </summary>
-        public const string NamePropertyName = "Name";
-
-        private string _Name;
-
-        /// <summary>
-        /// Name
-        /// </summary>
-        public string Name
-        {
-            get { return _Name; }
-
-            set
-            {
-                if (_Name == value) return;
-
-                _Name = value;
-                NotifyOfPropertyChange(NamePropertyName);
-            }
-        }
-
-        #endregion
-
-        #region Lan
-
-        /// <summary>
-        /// The <see cref="Lan" /> property's name.
-        /// </summary>
-        public const string LanPropertyName = "Lan";
-
-        private string _Lan;
-
-        /// <summary>
-        /// Lan
-        /// </summary>
-        public string Lan
-        {
-            get { return _Lan; }
-
-            set
-            {
-                if (_Lan == value) return;
-
-                _Lan = value;
-                NotifyOfPropertyChange(LanPropertyName);
-            }
-        }
-
-        #endregion
-
-        #region LanKey
-
-        /// <summary>
-        /// The <see cref="LanKey" /> property's name.
-        /// </summary>
-        public const string LanKeyPropertyName = "LanKey";
-
-        private string _LanKey;
-
-        /// <summary>
-        /// 多语言切换用的key
-        /// </summary>
-        public string LanKey
-        {
-            get { return _LanKey; }
-
-            set
-            {
-                if (_LanKey == value) return;
-
-                _LanKey = value;
-                NotifyOfPropertyChange(LanKeyPropertyName);
-            }
-        }
-
-        #endregion
-
         #region CType
 
         /// <summary>
@@ -146,6 +66,64 @@ namespace JsonConfiger.Models
 
                 _Value = value;
                 NotifyOfPropertyChange(ValuePropertyName);
+            }
+        }
+
+        #endregion
+
+        #region ItemsSource
+
+        /// <summary>
+        /// The <see cref="ItemsSource" /> property's name.
+        /// </summary>
+        public const string ItemsSourcePropertyName = "ItemsSource";
+
+        private List<CProperty> _ItemsSource;
+
+        /// <summary>
+        /// ItemsSource
+        /// </summary>
+        public List<CProperty> ItemsSource
+        {
+            get { return _ItemsSource; }
+
+            set
+            {
+                if (_ItemsSource == value) return;
+
+                _ItemsSource = value;
+                NotifyOfPropertyChange(ItemsSourcePropertyName);
+            }
+        }
+
+        #endregion
+
+        #region Selected
+
+        /// <summary>
+        /// The <see cref="Selected" /> property's name.
+        /// </summary>
+        public const string SelectedPropertyName = "Selected";
+
+        private CProperty _Selected;
+
+        /// <summary>
+        /// Selected
+        /// </summary>
+        public CProperty Selected
+        {
+            get { return _Selected; }
+
+            set
+            {
+                if (_Selected == value) return;
+
+                _Selected = value;
+                if (value == null)
+                    Value = null;
+                else
+                    Value = _Selected.Value;
+                NotifyOfPropertyChange(SelectedPropertyName);
             }
         }
 

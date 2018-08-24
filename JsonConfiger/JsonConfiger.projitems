@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)JCrService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CBaseObj.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NameConveter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CPropertyPDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CNode.cs" />

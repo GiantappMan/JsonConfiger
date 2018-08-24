@@ -79,7 +79,7 @@
             Margin="0,2"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            Content="{Binding Name}"
+            Content="{Binding Converter={StaticResource NameConveter}}"
             IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </DataTemplate>
 
@@ -105,6 +105,30 @@
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ComboboxEditor">
+        <Grid Margin="0,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}">
+                <Run Text=":" />
+            </TextBlock>
+            <ComboBox
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                ItemsSource="{Binding ItemsSource}"
+                SelectedItem="{Binding Selected, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

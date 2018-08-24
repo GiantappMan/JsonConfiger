@@ -45,6 +45,23 @@ namespace JsonConfiger
 
                             property.Lan = descInfo.lan;
                             property.LanKey = descInfo.lanKey;
+                            if (descInfo.cbItems != null)
+                            {
+                                var tempList = new List<CProperty>();
+                                foreach (var item in descInfo.cbItems)
+                                {
+                                    tempList.Add(new CProperty()
+                                    {
+                                        Lan = item.lan,
+                                        LanKey = item.lanKey,
+                                        Value = item.value.ToString()
+                                    });
+                                }
+                                property.ItemsSource = tempList;
+                                property.Selected = tempList.FirstOrDefault
+                                    (m => m.Value != null && property.Value != null
+                                    && m.Value.ToString() == property.Value.ToString());
+                            }
                         }
 
                         property.Name = x.Key;
@@ -56,8 +73,10 @@ namespace JsonConfiger
                     {
                         var node = new CNode();
                         if (descInfo != null)
+                        {
                             node.Lan = descInfo.lan;
-
+                            node.LanKey = descInfo.lanKey;
+                        }
                         node.Name = x.Key;
 
                         var r = ResolveJson(x.Value as JObject, descInfo as JObject);

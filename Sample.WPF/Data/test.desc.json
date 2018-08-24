@@ -3,15 +3,25 @@
     "lan": "设置",
     "s1": {
       "type": "Boolean",
-      "lan": "xxx"
+      "lan": "布尔值"
     },
     "s2": {
       "type": "string",
       "lanKey": "local_wallpaper"
     },
     "s3": {
-      "type": "string",
-      "lan": "xxx"
+      "type": "combobox",
+      "lan": "下拉框",
+      "cbItems": [
+        {
+          "lan": "中文",
+          "value": "zh"
+        },
+        {
+          "lan": "English",
+          "value": "en"
+        }
+      ]
     },
     "s4": {
       "type": "string",
