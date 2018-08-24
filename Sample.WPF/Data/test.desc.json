@@ -1,6 +1,6 @@
 ﻿{
   "setting": {
-    "lan": "设置",
+    "lanKey": "local_wallpaper",
     "s1": {
       "type": "Boolean",
       "lan": "布尔值"

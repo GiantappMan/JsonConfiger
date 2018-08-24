@@ -20,9 +20,9 @@ namespace JsonConfiger
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 #endif
         {
-            if (value is CProperty)
+            if (value is CBaseObj)
             {
-                var cp = value as CProperty;
+                var cp = value as CBaseObj;
                 if (!string.IsNullOrEmpty(cp.Lan))
                     return cp.Lan;
 
@@ -32,15 +32,6 @@ namespace JsonConfiger
                     return lan;
                 }
                 return cp.Name;
-            }
-
-            if (value is CNode)
-            {
-                var cn = value as CNode;
-                if (!string.IsNullOrEmpty(cn.Lan))
-                    return cn.Lan;
-
-                return cn.Name;
             }
 
             return value;
