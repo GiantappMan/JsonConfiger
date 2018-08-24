@@ -112,6 +112,7 @@ namespace JsonConfiger
 
             var vm = new JsonConfierViewModel();
             vm.Nodes = ResolveJson(config as JObject, descConfig as JObject).Nodes;
+            vm.Nodes[0].Selected = true;
             return vm;
         }
 

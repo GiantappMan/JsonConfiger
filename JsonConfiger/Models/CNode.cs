@@ -64,6 +64,33 @@ namespace JsonConfiger.Models
 
         #endregion
 
+        #region Selected
+
+        /// <summary>
+        /// The <see cref="Selected" /> property's name.
+        /// </summary>
+        public const string SelectedPropertyName = "Selected";
+
+        private bool _Selected;
+
+        /// <summary>
+        /// Selected
+        /// </summary>
+        public bool Selected
+        {
+            get { return _Selected; }
+
+            set
+            {
+                if (_Selected == value) return;
+
+                _Selected = value;
+                NotifyOfPropertyChange(SelectedPropertyName);
+            }
+        }
+
+        #endregion
+
         #endregion
     }
 }
