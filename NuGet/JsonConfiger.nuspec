@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>JsonConfiger</id>
-        <version>1.0.0.17</version>
+        <version>1.0.0.19</version>
         <title>JsonConfiger</title>
         <authors>MscoderStudio</authors>
         <owners>MscoderStudio</owners>
@@ -28,6 +28,8 @@
         </dependencies>
     </metadata>
     <files>
+        <!--<file src="..\JsonConfiger.WPF\bin\Debug\JsonConfiger.WPF.dll" target="lib\net46\JsonConfiger.WPF.dll" />
+        <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP.dll" target="lib\uap10.0\JsonConfiger.UWP.dll" />-->
         <file src="..\JsonConfiger.WPF\bin\Release\JsonConfiger.WPF.dll" target="lib\net46\JsonConfiger.WPF.dll" />
         <file src="..\JsonConfiger.UWP\bin\Release\JsonConfiger.UWP.dll" target="lib\uap10.0\JsonConfiger.UWP.dll" />
     </files>

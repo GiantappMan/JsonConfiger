@@ -25,7 +25,6 @@ namespace JsonConfiger
             var childNodes = new ObservableCollection<CNode>();
             var properties = new ObservableCollection<CProperty>();
             dynamic descInfo = null;
-            //var descList = descObj as ICollection<KeyValuePair<string, JToken>>;
             if (data != null)
                 foreach (var x in data)
                 {

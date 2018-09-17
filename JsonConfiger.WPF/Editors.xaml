@@ -114,7 +114,7 @@
                 <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}">
+            <TextBlock VerticalAlignment="Center" Text="{Binding Converter={StaticResource NameConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <ComboBox
