@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Windows.ApplicationModel.Resources;
 
 #if WINDOWS_UWP
 using Windows.UI.Xaml.Data;
@@ -15,14 +16,28 @@ namespace JsonConfiger
     public class NameConveter : IValueConverter
     {
 #if WINDOWS_UWP
+
+        private static ResourceLoader _loader;
+        private static ResourceLoader CurrentResourceLoader
+        {
+            get { return _loader ?? (_loader = ResourceLoader.GetForCurrentView("Resources")); }
+        }
+        public static string GetString(string key)
+        {
+            string s = CurrentResourceLoader.GetString(key);
+            return s;
+        }
+
         public object Convert(object value, Type targetType, object parameter, string language)
 #else
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 #endif
         {
+#pragma warning disable CS0436 // Type conflicts with imported type
             if (value is CBaseObj)
             {
-                var cp = value as CBaseObj;
+                CBaseObj cp = value as CBaseObj;
+#pragma warning restore CS0436 // Type conflicts with imported type
                 if (!string.IsNullOrEmpty(cp.Lan))
                     return cp.Lan;
 
@@ -31,6 +46,15 @@ namespace JsonConfiger
                     string lan = LanService.Get(cp.LanKey).Result;
                     return lan;
                 }
+
+#if WINDOWS_UWP
+                if (!string.IsNullOrEmpty(cp.UID))
+                {
+                    string lan = GetString(cp.UID);
+                    return lan;
+                }
+#endif
+
                 return cp.Name;
             }
 

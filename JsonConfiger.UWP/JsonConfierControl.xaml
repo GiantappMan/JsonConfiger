@@ -20,6 +20,17 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
-   
+        <TreeView
+            x:Name="tree"
+            Margin="5"
+            SelectionMode="Single" />
+        <ItemsControl
+            Grid.Column="1"
+            Margin="5"
+            Padding="15"
+            HorizontalContentAlignment="Stretch"
+            BorderBrush="{Binding ElementName=tree, Path=BorderBrush}"
+            BorderThickness="1"
+            ItemTemplateSelector="{StaticResource TemplateSelector}" />
     </Grid>
 </UserControl>

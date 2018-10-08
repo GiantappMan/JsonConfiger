@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JsonConfiger.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,14 +20,41 @@ namespace JsonConfiger.UWP
 {
     public sealed partial class JsonConfierControl : UserControl
     {
+        NameConveter nameConveter = new NameConveter();
         public JsonConfierControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            DataContextChanged += JsonConfierControl_DataContextChanged;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void JsonConfierControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
+            DataContextChanged -= JsonConfierControl_DataContextChanged;
+            var vm = DataContext as JsonConfierViewModel;
+            if (vm == null)
+                return;
 
+            foreach (var item in vm.Nodes)
+            {
+                TreeViewNode node = GetNode(item);
+                tree.RootNodes.Add(node);
+            }
+        }
+
+        private TreeViewNode GetNode(CNode item)
+        {
+            TreeViewNode result = new TreeViewNode();
+            result.IsExpanded = item.Selected;
+            result.Content = nameConveter.Convert(item, null, null, null);
+            if (item.Children != null)
+            {
+                foreach (var sub in item.Children)
+                {
+                    TreeViewNode subNode = GetNode(sub);
+                    result.Children.Add(subNode);
+                }
+            }
+            return result;
         }
     }
 }

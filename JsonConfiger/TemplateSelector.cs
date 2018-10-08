@@ -14,7 +14,7 @@ using System.Windows.Controls;
 #endif
 namespace JsonConfiger
 {
-    class TemplateSelector : DataTemplateSelector
+    public class TemplateSelector : DataTemplateSelector
     {
 #if WINDOWS_UWP
 
@@ -23,9 +23,12 @@ namespace JsonConfiger
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
 #endif
         {
-            var cp = item as CProperty;
-            if (cp == null)
+#pragma warning disable CS0436 // Type conflicts with imported type
+            if (!(item is CProperty cp))
+#pragma warning restore CS0436 // Type conflicts with imported type
+            {
                 return null;
+            }
 
             string key = $"{cp.CType.ToString()}Editor";
 #if WINDOWS_UWP

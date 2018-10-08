@@ -88,5 +88,31 @@ namespace JsonConfiger.Models
 
         #endregion
 
+        #region UID
+
+        /// <summary>
+        /// The <see cref="UID" /> property's name.
+        /// </summary>
+        public const string UIDPropertyName = "UID";
+
+        private string _UID;
+
+        /// <summary>
+        /// UID
+        /// </summary>
+        public string UID
+        {
+            get { return _UID; }
+
+            set
+            {
+                if (_UID == value) return;
+
+                _UID = value;
+                NotifyOfPropertyChange(UIDPropertyName);
+            }
+        }
+
+        #endregion
     }
 }
