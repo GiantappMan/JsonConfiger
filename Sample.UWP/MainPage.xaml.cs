@@ -51,7 +51,9 @@ namespace Sample.UWP
         {
             var vm = control.DataContext as JsonConfierViewModel;
             var data = service.GetData(vm.Nodes);
-            await JsonHelper.JsonSerializeAsync(data, path);
+            //to uwp write file
+            //path = "D:\test.json";
+            //var test = await JsonHelper.JsonSerializeAsync(data, path);
             //grid.Children.RemoveAt(0);
         }
     }

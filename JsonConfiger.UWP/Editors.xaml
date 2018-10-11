@@ -5,7 +5,18 @@
     xmlns:behavior="using:DZY.DotNetUtil.UWP.Behavior"
     xmlns:local="using:JsonConfiger"
     xmlns:validations="using:DZY.DotNetUtil.UWP.Behavior.Validations">
-    <local:TemplateSelector x:Key="TemplateSelector" />
+
+    <local:TemplateSelector x:Key="TemplateSelector">
+        <local:TemplateSelector.DataTemplates>
+            <local:TempateItem Key="StringEditor" Template="{StaticResource StringEditor}" />
+            <local:TempateItem Key="IntegerEditor" Template="{StaticResource IntegerEditor}" />
+            <local:TempateItem Key="FloatEditor" Template="{StaticResource FloatEditor}" />
+            <local:TempateItem Key="BooleanEditor" Template="{StaticResource BooleanEditor}" />
+            <local:TempateItem Key="TimeSpanEditor" Template="{StaticResource TimeSpanEditor}" />
+            <local:TempateItem Key="ComboboxEditor" Template="{StaticResource ComboboxEditor}" />
+        </local:TemplateSelector.DataTemplates>
+    </local:TemplateSelector>
+
     <local:NameConveter x:Key="NameConveter" />
     <Style x:Key="TextBox_Error" TargetType="TextBox">
         <Setter Property="BorderBrush" Value="Red" />
@@ -40,6 +51,7 @@
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTipService.ToolTip="{Binding ElementName=vb, Path=ErrMessage, Mode=OneWay}">
                 <Interactivity:Interaction.Behaviors>
                     <behavior:ValidationBehavior x:Name="vb" InvalidStyle="{StaticResource TextBox_Error}">
@@ -65,6 +77,7 @@
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTipService.ToolTip="{Binding ElementName=vb, Path=ErrMessage, Mode=OneWay}">
                 <Interactivity:Interaction.Behaviors>
                     <behavior:ValidationBehavior x:Name="vb" InvalidStyle="{StaticResource TextBox_Error}">
@@ -100,6 +113,7 @@
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
+                Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTipService.ToolTip="{Binding ElementName=vb, Path=ErrMessage, Mode=OneWay}">
                 <Interactivity:Interaction.Behaviors>
                     <behavior:ValidationBehavior x:Name="vb" InvalidStyle="{StaticResource TextBox_Error}">
@@ -135,4 +149,5 @@
             </ComboBox>
         </Grid>
     </DataTemplate>
+
 </ResourceDictionary>

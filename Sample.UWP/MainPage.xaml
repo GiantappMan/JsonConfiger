@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:Name="grid">
-       
+        <Button Width="50"  Click="Button_Click">Save</Button>
     </Grid>
 </Page>

@@ -14,9 +14,17 @@ using System.Windows.Controls;
 #endif
 namespace JsonConfiger
 {
+#if WINDOWS_UWP
+    public class TempateItem
+    {
+        public string Key { get; set; }
+        public DataTemplate Template { get; set; }
+    }
+#endif
     public class TemplateSelector : DataTemplateSelector
     {
 #if WINDOWS_UWP
+        public List<TempateItem> DataTemplates { get; set; } = new List<TempateItem>();
 
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
 #else 
@@ -32,7 +40,7 @@ namespace JsonConfiger
 
             string key = $"{cp.CType.ToString()}Editor";
 #if WINDOWS_UWP
-            var template = ((FrameworkElement)container).FindName(key) as DataTemplate;
+            var template = (DataTemplates.FirstOrDefault(m => m.Key == key)?.Template);
 
 #else
             var template = ((FrameworkElement)container).FindResource(key) as DataTemplate;

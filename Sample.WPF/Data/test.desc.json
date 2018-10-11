@@ -33,7 +33,7 @@
     },
     "custom": {
       "c1": {
-        "type": "string",
+        "type": "integer",
         "lan": "xxx"
       },
       "c2": {

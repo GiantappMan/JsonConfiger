@@ -23,7 +23,7 @@
         <TreeView
             x:Name="tree"
             Margin="5"
-            ItemInvoked="tree_ItemInvoked"
+            ItemInvoked="Tree_ItemInvoked"
             SelectionMode="Single" />
         <ItemsControl
             x:Name="itemsControl"

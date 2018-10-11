@@ -115,10 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DZY.DotNetUtil">
-      <Version>1.0.24</Version>
+      <Version>1.0.26</Version>
     </PackageReference>
     <PackageReference Include="DZY.DotNetUtil.UI">
-      <Version>1.0.0.29</Version>
+      <Version>1.0.0.32</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.9</Version>

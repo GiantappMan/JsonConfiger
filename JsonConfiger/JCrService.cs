@@ -78,9 +78,9 @@ namespace JsonConfiger
                         }
                         node.Name = x.Key;
 
-                        var r = ResolveJson(x.Value as JObject, descInfo as JObject);
-                        node.Children = r.Nodes;
-                        node.Properties = r.Properties;
+                        var (Nodes, Properties) = ResolveJson(x.Value as JObject, descInfo as JObject);
+                        node.Children = Nodes;
+                        node.Properties = Properties;
                         childNodes.Add(node);
                     }
                 }
@@ -93,8 +93,10 @@ namespace JsonConfiger
             if (value == null)
                 return null;
 
-            CProperty result = new CProperty();
-            result.Value = value.Value;
+            CProperty result = new CProperty
+            {
+                Value = value.Value
+            };
             bool ok = Enum.TryParse(value.Type.ToString(), out CPropertyType Type);
             if (!ok)
                 return null;
@@ -105,24 +107,27 @@ namespace JsonConfiger
 
         public JsonConfierViewModel GetVM(object config, object descConfig)
         {
-            var json = config as JObject;
-            if (json == null)
+            if (!(config is JObject json))
                 return null;
 
-            var vm = new JsonConfierViewModel();
-            vm.Nodes = ResolveJson(config as JObject, descConfig as JObject).Nodes;
+            var vm = new JsonConfierViewModel
+            {
+                Nodes = ResolveJson(config as JObject, descConfig as JObject).Nodes
+            };
             vm.Nodes[0].Selected = true;
             return vm;
         }
 
         public UserControl GetView(object config, object desc)
         {
-            var control = new JsonConfierControl();
-            control.DataContext = GetVM(config, desc);
+            var control = new JsonConfierControl
+            {
+                DataContext = GetVM(config, desc)
+            };
             return control;
         }
 
-        public Object GetData(ObservableCollection<CNode> nodes)
+        public object GetData(ObservableCollection<CNode> nodes)
         {
             var result = new ExpandoObject() as IDictionary<string, Object>;
             foreach (var nodeItem in nodes)

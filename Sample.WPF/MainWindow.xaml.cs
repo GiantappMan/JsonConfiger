@@ -54,7 +54,7 @@ namespace Sample.WPF
         {
             var vm = control.DataContext as JsonConfierViewModel;
             var data = service.GetData(vm.Nodes);
-            await JsonHelper.JsonSerializeAsync(data, path);
+            var test = await JsonHelper.JsonSerializeAsync(data, path);
             //grid.Children.RemoveAt(0);
         }
     }

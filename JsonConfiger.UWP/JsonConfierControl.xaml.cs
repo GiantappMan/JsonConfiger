@@ -18,8 +18,7 @@ namespace JsonConfiger.UWP
         private void JsonConfierControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             DataContextChanged -= JsonConfierControl_DataContextChanged;
-            var vm = DataContext as JsonConfierViewModel;
-            if (vm == null)
+            if (!(DataContext is JsonConfierViewModel vm))
                 return;
 
             foreach (var item in vm.Nodes)
@@ -31,9 +30,11 @@ namespace JsonConfiger.UWP
 
         private TreeViewNode GetNode(CNode item)
         {
-            TreeViewNode result = new TreeViewNode();
-            result.IsExpanded = item.Selected;
-            result.Content = _nameConveter.Convert(item, null, null, null);
+            TreeViewNode result = new TreeViewNode
+            {
+                IsExpanded = item.Selected,
+                Content = _nameConveter.Convert(item, null, null, null)
+            };
             _data[result] = item;
             if (item.Children != null)
             {
@@ -46,7 +47,7 @@ namespace JsonConfiger.UWP
             return result;
         }
 
-        private void tree_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
+        private void Tree_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
         {
             var node = args.InvokedItem as TreeViewNode;
             itemsControl.ItemsSource = _data[node].Properties;
