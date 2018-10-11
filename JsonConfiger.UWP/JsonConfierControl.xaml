@@ -23,8 +23,10 @@
         <TreeView
             x:Name="tree"
             Margin="5"
+            ItemInvoked="tree_ItemInvoked"
             SelectionMode="Single" />
         <ItemsControl
+            x:Name="itemsControl"
             Grid.Column="1"
             Margin="5"
             Padding="15"
