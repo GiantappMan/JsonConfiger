@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-    <metadata>
-        <id>JsonConfiger</id>
-        <version>1.0.0.23</version>
-        <title>JsonConfiger</title>
-        <authors>MscoderStudio</authors>
-        <owners>MscoderStudio</owners>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <licenseUrl>https://raw.githubusercontent.com/DaZiYuan/JsonConfiger/master/LICENSE</licenseUrl>
-        <projectUrl>https://github.com/DaZiYuan/JsonConfiger</projectUrl>
-        <description>根据JSON生成WPF/UWP配置界面</description>
-        <summary>根据JSON生成WPF/UWP配置界面</summary>
-        <copyright>MscoderStudio</copyright>
-        <tags>UWP WPF JsonConfiger</tags>
-        <dependencies>
-            <group targetFramework="net46">
-              <dependency id="DZY.DotNetUtil" version="1.0.3" />
-              <dependency id="System.ValueTuple" version="4.5.0" />
-              <dependency id="MultiLanguageForXAML" version="1.0.0.15" />
-              <dependency id="Newtonsoft.Json" version="11.0.2" />
-            </group>
-            <group targetFramework="uap10.0">
-              <dependency id="Newtonsoft.Json" version="11.0.2" />
-              <dependency id="DZY.DotNetUtil" version="1.0.3" />
-            </group>
-        </dependencies>
-    </metadata>
-    <files>
-        <file src="..\JsonConfiger.WPF\bin\Debug\JsonConfiger.WPF.dll" target="lib\net46\JsonConfiger.WPF.dll" />
-        <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP.dll" target="lib\uap10.0\JsonConfiger.UWP.dll" />
-        <!--<file src="..\JsonConfiger.WPF\bin\Release\JsonConfiger.WPF.dll" target="lib\net46\JsonConfiger.WPF.dll" />
-        <file src="..\JsonConfiger.UWP\bin\Release\JsonConfiger.UWP.dll" target="lib\uap10.0\JsonConfiger.UWP.dll" />-->
-    </files>
+  <metadata>
+    <id>JsonConfiger</id>
+    <version>1.0.0.23</version>
+    <title>JsonConfiger</title>
+    <authors>MscoderStudio</authors>
+    <owners>MscoderStudio</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/DaZiYuan/JsonConfiger/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/DaZiYuan/JsonConfiger</projectUrl>
+    <description>根据JSON生成WPF/UWP配置界面</description>
+    <summary>根据JSON生成WPF/UWP配置界面</summary>
+    <copyright>MscoderStudio</copyright>
+    <tags>UWP WPF JsonConfiger</tags>
+    <dependencies>
+      <group targetFramework="net46">
+        <dependency id="DZY.DotNetUtil" version="1.0.3" />
+        <dependency id="System.ValueTuple" version="4.5.0" />
+        <dependency id="MultiLanguageForXAML" version="1.0.0.15" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
+      </group>
+      <group targetFramework="uap10.0">
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
+        <dependency id="DZY.DotNetUtil" version="1.0.3" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\JsonConfiger.WPF\bin\Debug\JsonConfiger.WPF.dll" target="lib\net46\JsonConfiger.WPF.dll" />
+    <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP.dll" target="lib\uap10.0\JsonConfiger.UWP.dll" />
+    <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP.pri" target="lib\uap10.0\JsonConfiger.UWP.pri" />
+    <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP\" target="lib\uap10.0\JsonConfiger.UWP\" />
+  </files>
 </package>
