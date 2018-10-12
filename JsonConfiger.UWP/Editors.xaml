@@ -27,7 +27,7 @@
                 <ColumnDefinition MaxWidth="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}">
+            <TextBlock VerticalAlignment="Center" Text="{Binding Converter={StaticResource NameConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <TextBox
@@ -44,7 +44,7 @@
                 <ColumnDefinition MaxWidth="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}">
+            <TextBlock VerticalAlignment="Center" Text="{Binding Converter={StaticResource NameConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <TextBox
@@ -70,7 +70,7 @@
                 <ColumnDefinition MaxWidth="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}">
+            <TextBlock VerticalAlignment="Center" Text="{Binding Converter={StaticResource NameConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <TextBox
@@ -106,7 +106,7 @@
                 <ColumnDefinition MaxWidth="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}">
+            <TextBlock VerticalAlignment="Center" Text="{Binding Converter={StaticResource NameConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <TextBox

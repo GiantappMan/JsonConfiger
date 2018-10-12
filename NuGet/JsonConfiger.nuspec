@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>JsonConfiger</id>
-    <version>1.0.0.24</version>
+    <version>1.0.0.36</version>
     <title>JsonConfiger</title>
     <authors>MscoderStudio</authors>
     <owners>MscoderStudio</owners>
@@ -23,6 +23,7 @@
       </group>
       <group targetFramework="uap10.0">
         <dependency id="Newtonsoft.Json" version="11.0.2" />
+        <dependency id="MultiLanguageForXAML" version="1.0.0.18" />
         <dependency id="DZY.DotNetUtil" version="1.0.3" />
       </group>
     </dependencies>

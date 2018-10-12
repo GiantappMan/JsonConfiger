@@ -17,10 +17,10 @@ namespace JsonConfiger.UWP
 
         private void JsonConfierControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            DataContextChanged -= JsonConfierControl_DataContextChanged;
             if (!(DataContext is JsonConfierViewModel vm))
                 return;
 
+            DataContextChanged -= JsonConfierControl_DataContextChanged;
             foreach (var item in vm.Nodes)
             {
                 TreeViewNode node = GetNode(item);

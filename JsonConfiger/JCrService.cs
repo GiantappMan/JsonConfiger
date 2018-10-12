@@ -44,6 +44,7 @@ namespace JsonConfiger
 
                             property.Lan = descInfo.lan;
                             property.LanKey = descInfo.lanKey;
+                            property.UID = descInfo.uid;
                             if (descInfo.cbItems != null)
                             {
                                 var tempList = new List<CProperty>();
@@ -53,7 +54,8 @@ namespace JsonConfiger
                                     {
                                         Lan = item.lan,
                                         LanKey = item.lanKey,
-                                        Value = item.value.ToString()
+                                        Value = item.value.ToString(),
+                                        UID = item.uid
                                     });
                                 }
                                 property.ItemsSource = tempList;
@@ -75,6 +77,7 @@ namespace JsonConfiger
                         {
                             node.Lan = descInfo.lan;
                             node.LanKey = descInfo.lanKey;
+                            node.UID = descInfo.uid;
                         }
                         node.Name = x.Key;
 

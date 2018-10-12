@@ -1,13 +1,13 @@
 ﻿{
   "setting": {
-    "uID": "local_wallpaper",
+    "uid": "local_wallpaper",
     "s1": {
       "type": "Boolean",
       "lan": "布尔值"
     },
     "s2": {
       "type": "string",
-      "uID": "local_wallpaper"
+      "uid": "local_wallpaper"
     },
     "s3": {
       "type": "combobox",
