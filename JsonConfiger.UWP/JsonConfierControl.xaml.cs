@@ -26,6 +26,9 @@ namespace JsonConfiger.UWP
                 TreeViewNode node = GetNode(item);
                 tree.RootNodes.Add(node);
             }
+
+            if (vm.Nodes.Count > 0)
+                itemsControl.ItemsSource = vm.Nodes[0].Properties;
         }
 
         private TreeViewNode GetNode(CNode item)
