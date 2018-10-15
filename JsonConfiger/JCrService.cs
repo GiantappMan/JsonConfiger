@@ -101,10 +101,8 @@ namespace JsonConfiger
                 Value = value.Value
             };
             bool ok = Enum.TryParse(value.Type.ToString(), out CPropertyType Type);
-            if (!ok)
-                return null;
-
-            result.CType = Type;
+            if (ok)
+                result.CType = Type;
             return result;
         }
 
