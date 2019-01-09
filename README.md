@@ -33,3 +33,5 @@
  var descConfig = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(descPath);
  JsonConfierViewModel = _jcrService.GetVM(config, descConfig);
  ```
+## 注意事项：
+lanKey区分大小写，定义时K不要写成小写了
