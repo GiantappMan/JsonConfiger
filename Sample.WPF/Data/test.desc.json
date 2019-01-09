@@ -3,7 +3,8 @@
     "uid": "local_wallpaper",
     "s1": {
       "type": "Boolean",
-      "lan": "布尔值"
+      "lan": "布尔值",
+      "desc": "描述"
     },
     "s2": {
       "type": "string",

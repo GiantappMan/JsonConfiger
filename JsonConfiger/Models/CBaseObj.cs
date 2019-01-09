@@ -88,6 +88,60 @@ namespace JsonConfiger.Models
 
         #endregion
 
+        #region Desc
+
+        /// <summary>
+        /// The <see cref="Desc" /> property's name.
+        /// </summary>
+        public const string DescPropertyName = "Desc";
+
+        private string _Desc;
+
+        /// <summary>
+        /// Desc
+        /// </summary>
+        public string Desc
+        {
+            get { return _Desc; }
+
+            set
+            {
+                if (_Desc == value) return;
+
+                _Desc = value;
+                NotifyOfPropertyChange(DescPropertyName);
+            }
+        }
+
+        #endregion
+
+        #region DescLanKey
+
+        /// <summary>
+        /// The <see cref="DescLanKey" /> property's name.
+        /// </summary>
+        public const string DescLanKeyPropertyName = "DescLanKey";
+
+        private string _DescLanKey;
+
+        /// <summary>
+        /// DescLanKey
+        /// </summary>
+        public string DescLanKey
+        {
+            get { return _DescLanKey; }
+
+            set
+            {
+                if (_DescLanKey == value) return;
+
+                _DescLanKey = value;
+                NotifyOfPropertyChange(DescLanKeyPropertyName);
+            }
+        }
+
+        #endregion
+
         #region UID
 
         /// <summary>

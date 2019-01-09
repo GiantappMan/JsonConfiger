@@ -15,6 +15,7 @@ namespace JsonConfiger
 {
     public class NameConveter : IValueConverter
     {
+        public bool ReadDesc { get; set; }
 #if WINDOWS_UWP
 
         private static ResourceLoader _loader;
@@ -38,13 +39,29 @@ namespace JsonConfiger
             {
                 CBaseObj cp = value as CBaseObj;
 #pragma warning restore CS0436 // Type conflicts with imported type
-                if (!string.IsNullOrEmpty(cp.Lan))
-                    return cp.Lan;
 
-                if (!string.IsNullOrEmpty(cp.LanKey))
+                if (ReadDesc)
                 {
-                    string lan = LanService.Get(cp.LanKey).Result;
-                    return lan;
+                    if (!string.IsNullOrEmpty(cp.Desc))
+                        return cp.Desc;
+
+                    if (!string.IsNullOrEmpty(cp.DescLanKey))
+                    {
+                        string lan = LanService.Get(cp.DescLanKey).Result;
+                        return lan;
+                    }
+                    return null;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(cp.Lan))
+                        return cp.Lan;
+
+                    if (!string.IsNullOrEmpty(cp.LanKey))
+                    {
+                        string lan = LanService.Get(cp.LanKey).Result;
+                        return lan;
+                    }
                 }
 
 #if WINDOWS_UWP

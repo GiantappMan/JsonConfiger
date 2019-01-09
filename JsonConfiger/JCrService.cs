@@ -42,21 +42,17 @@ namespace JsonConfiger
                             if (ok)
                                 property.CType = cType;
 
-                            property.Lan = descInfo.lan;
-                            property.LanKey = descInfo.lanKey;
-                            property.UID = descInfo.uid;
+                            FillObj(property, descInfo);
+
                             if (descInfo.cbItems != null)
                             {
                                 var tempList = new List<CProperty>();
                                 foreach (var item in descInfo.cbItems)
                                 {
-                                    tempList.Add(new CProperty()
-                                    {
-                                        Lan = item.lan,
-                                        LanKey = item.lanKey,
-                                        Value = item.value.ToString(),
-                                        UID = item.uid
-                                    });
+                                    var tmp = new CProperty();
+                                    FillObj(tmp, item);
+                                    tmp.Value = item.value.ToString();
+                                    tempList.Add(tmp);
                                 }
                                 property.ItemsSource = tempList;
                                 property.Selected = tempList.FirstOrDefault
@@ -75,9 +71,7 @@ namespace JsonConfiger
                         var node = new CNode();
                         if (descInfo != null)
                         {
-                            node.Lan = descInfo.lan;
-                            node.LanKey = descInfo.lanKey;
-                            node.UID = descInfo.uid;
+                            FillObj(node, descInfo);
                         }
                         node.Name = x.Key;
 
@@ -89,6 +83,15 @@ namespace JsonConfiger
                 }
 
             return (childNodes, properties);
+        }
+
+        private void FillObj(CBaseObj property, dynamic descInfo)
+        {
+            property.Lan = descInfo.lan;
+            property.LanKey = descInfo.lanKey;
+            property.Desc = descInfo.desc;
+            property.DescLanKey = descInfo.descLanKey;
+            property.UID = descInfo.uid;
         }
 
         private CProperty ConverterToNodeProperty(JValue value)

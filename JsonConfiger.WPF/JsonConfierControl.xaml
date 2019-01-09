@@ -33,7 +33,7 @@
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type models:CNode}" ItemsSource="{Binding Children}">
-                    <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" />
+                    <TextBlock ToolTip="{Binding DescLanKey}" Text="{Binding Converter={StaticResource NameConveter}}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
