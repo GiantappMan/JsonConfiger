@@ -46,6 +46,7 @@ namespace Sample.WPF
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
             var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
             control = service.GetView(data as JObject, dataDesc as JObject);
+            control.BorderBrush = new SolidColorBrush(Colors.Red);
             //control = service.GetView(data, null);
 
             grid.Children.Insert(0, control);
