@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using DZY.DotNetUtil.Helpers;
 
 namespace JsonConfiger
 {
@@ -109,6 +110,20 @@ namespace JsonConfiger
             return result;
         }
 
+        public JsonConfierViewModel GetVM(string configJson, string descConfigJson)
+        {
+            var config = JsonHelper.JsonDeserialize<dynamic>(configJson);
+            var descConfig = JsonHelper.JsonDeserialize<dynamic>(descConfigJson);
+
+            var vm = new JsonConfierViewModel
+            {
+                Nodes = ResolveJson(config as JObject, descConfig as JObject).Nodes
+            };
+            vm.Nodes[0].Selected = true;
+            return vm;
+        }
+
+        [Obsolete]
         public JsonConfierViewModel GetVM(object config, object descConfig)
         {
             if (!(config is JObject json))
