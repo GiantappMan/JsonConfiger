@@ -47,7 +47,7 @@ namespace Sample.UWP
             grid.Children.Insert(0, control);
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var vm = control.DataContext as JsonConfierViewModel;
             var data = service.GetData(vm.Nodes);
