@@ -28,6 +28,7 @@
  
  * **ViewModel**
  ```csharp
+ JCrService _jcrService = new JCrService();
  var config = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(todo.ConfigFilePath);
  string descPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Resources\\Configs\\setting.desc.json");
  var descConfig = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(descPath);
