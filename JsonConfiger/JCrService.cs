@@ -110,14 +110,11 @@ namespace JsonConfiger
             return result;
         }
 
-        public JsonConfierViewModel GetVM(string configJson, string descConfigJson)
+        public JsonConfierViewModel GetVM(JObject config, JObject descConfig)
         {
-            var config = JsonHelper.JsonDeserialize<dynamic>(configJson);
-            var descConfig = JsonHelper.JsonDeserialize<dynamic>(descConfigJson);
-
             var vm = new JsonConfierViewModel
             {
-                Nodes = ResolveJson(config as JObject, descConfig as JObject).Nodes
+                Nodes = ResolveJson(config, descConfig).Nodes
             };
             vm.Nodes[0].Selected = true;
             return vm;
@@ -137,7 +134,17 @@ namespace JsonConfiger
             return vm;
         }
 
+        [Obsolete]
         public UserControl GetView(object config, object desc)
+        {
+            var control = new JsonConfierControl
+            {
+                DataContext = GetVM(config, desc)
+            };
+            return control;
+        }
+
+        public UserControl GetView(JObject config, JObject desc)
         {
             var control = new JsonConfierControl
             {

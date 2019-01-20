@@ -2,6 +2,7 @@
 using JsonConfiger;
 using JsonConfiger.Models;
 using MultiLanguageManager;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace Sample.WPF
             //descPath = @"E:\mscoder\github\EyeNurse\EyeNurse.Client\bin\Debug\Configs\setting.desc.json";
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
             var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
-            control = service.GetView(data, dataDesc);
+            control = service.GetView(data as JObject, dataDesc as JObject);
             //control = service.GetView(data, null);
 
             grid.Children.Insert(0, control);
