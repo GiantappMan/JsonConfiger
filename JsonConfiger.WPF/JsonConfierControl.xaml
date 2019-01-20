@@ -25,6 +25,7 @@
         <TreeView
             x:Name="tree"
             Padding="10"
+            BorderThickness="1"
             BorderBrush="{Binding ElementName=usercontrol, Path=BorderBrush}"
             Margin="5"
             ItemsSource="{Binding Nodes, Mode=OneWay}">
