@@ -28,6 +28,7 @@ namespace Sample.WPF
         JCrService service = new JCrService();
         UserControl control;
         string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
+        string defaultPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.default.json");
         string descPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.desc.json");
         public MainWindow()
         {
@@ -44,7 +45,11 @@ namespace Sample.WPF
             //path = @"C:\Users\zy\AppData\Roaming\EyeNurse\Configs\setting.json";
             //descPath = @"E:\mscoder\github\EyeNurse\EyeNurse.Client\bin\Debug\Configs\setting.desc.json";
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
+            var defaultData = await JsonHelper.JsonDeserializeFromFileAsync<object>(defaultPath);
             var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
+
+            data = JCrService.CheckDefault(data as JObject, defaultData as JObject);
+
             control = service.GetView(data as JObject, dataDesc as JObject);
             control.BorderBrush = new SolidColorBrush(Colors.Red);
             //control = service.GetView(data, null);

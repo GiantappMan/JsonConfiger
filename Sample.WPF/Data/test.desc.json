@@ -46,5 +46,11 @@
         "lan": "xxx"
       }
     }
+  },
+  "setting2": {
+    "test": {
+      "lan": "测试",
+      "type": "string"
+    }
   }
 }

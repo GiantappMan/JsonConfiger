@@ -25,65 +25,94 @@ namespace JsonConfiger
         {
             var childNodes = new ObservableCollection<CNode>();
             var properties = new ObservableCollection<CProperty>();
+            if (data == null)
+                return (childNodes, properties);
+
             dynamic descInfo = null;
-            if (data != null)
-                foreach (var x in data)
+            foreach (var x in data)
+            {
+                if (descObj != null)
+                    descInfo = descObj[x.Key];
+                if (x.Value is JValue)
                 {
-                    if (descObj != null)
-                        descInfo = descObj[x.Key];
-                    if (x.Value is JValue)
+                    var value = x.Value as JValue;
+                    CProperty property = ConverterToNodeProperty(value);
+                    if (property == null)
+                        continue;
+                    if (descInfo != null)
                     {
-                        var value = x.Value as JValue;
-                        CProperty property = ConverterToNodeProperty(value);
-                        if (property == null)
-                            continue;
-                        if (descInfo != null)
+                        bool ok = Enum.TryParse(descInfo.type.ToString(), true, out CPropertyType cType);
+                        if (ok)
+                            property.CType = cType;
+
+                        FillObj(property, descInfo);
+
+                        if (descInfo.cbItems != null)
                         {
-                            bool ok = Enum.TryParse(descInfo.type.ToString(), true, out CPropertyType cType);
-                            if (ok)
-                                property.CType = cType;
-
-                            FillObj(property, descInfo);
-
-                            if (descInfo.cbItems != null)
+                            var tempList = new List<CProperty>();
+                            foreach (var item in descInfo.cbItems)
                             {
-                                var tempList = new List<CProperty>();
-                                foreach (var item in descInfo.cbItems)
-                                {
-                                    var tmp = new CProperty();
-                                    FillObj(tmp, item);
-                                    tmp.Value = item.value.ToString();
-                                    tempList.Add(tmp);
-                                }
-                                property.ItemsSource = tempList;
-                                property.Selected = tempList.FirstOrDefault
-                                    (m => m.Value != null && property.Value != null
-                                    && m.Value.ToString() == property.Value.ToString());
+                                var tmp = new CProperty();
+                                FillObj(tmp, item);
+                                tmp.Value = item.value.ToString();
+                                tempList.Add(tmp);
                             }
+                            property.ItemsSource = tempList;
+                            property.Selected = tempList.FirstOrDefault
+                                (m => m.Value != null && property.Value != null
+                                && m.Value.ToString() == property.Value.ToString());
                         }
-
-                        property.Name = x.Key;
-
-                        if (property != null)
-                            properties.Add(property);
                     }
-                    else
-                    {
-                        var node = new CNode();
-                        if (descInfo != null)
-                        {
-                            FillObj(node, descInfo);
-                        }
-                        node.Name = x.Key;
 
-                        var (Nodes, Properties) = ResolveJson(x.Value as JObject, descInfo as JObject);
-                        node.Children = Nodes;
-                        node.Properties = Properties;
-                        childNodes.Add(node);
-                    }
+                    property.Name = x.Key;
+
+                    if (property != null)
+                        properties.Add(property);
                 }
+                else
+                {
+                    var node = new CNode();
+                    if (descInfo != null)
+                    {
+                        FillObj(node, descInfo);
+                    }
+                    node.Name = x.Key;
+
+                    var (Nodes, Properties) = ResolveJson(x.Value as JObject, descInfo as JObject);
+                    node.Children = Nodes;
+                    node.Properties = Properties;
+                    childNodes.Add(node);
+                }
+            }
 
             return (childNodes, properties);
+        }
+
+        /// <summary>
+        /// 和默认配置对比，如果缺失则补上
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="defaultData"></param>
+        /// <returns></returns>
+        public static JToken CheckDefault(JObject data, JObject defaultData)
+        {
+            var result = JToken.FromObject(new object());
+            if (data != null)
+                result = data.DeepClone();
+            foreach (var x in defaultData)
+            {
+                var tmpValue = result[x.Key];
+                var defaultValue = defaultData[x.Key];
+                if (tmpValue == null)
+                {
+                    result[x.Key] = defaultValue;
+                }
+                else if (!(tmpValue is JValue))
+                {
+                    result[x.Key] = CheckDefault(tmpValue as JObject, defaultValue as JObject);
+                }
+            }
+            return result;
         }
 
         private void FillObj(CBaseObj property, dynamic descInfo)

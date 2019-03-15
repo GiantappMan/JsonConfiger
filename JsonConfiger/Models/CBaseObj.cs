@@ -152,7 +152,7 @@ namespace JsonConfiger.Models
         private string _UID;
 
         /// <summary>
-        /// UID
+        /// UID  UWP专用
         /// </summary>
         public string UID
         {
