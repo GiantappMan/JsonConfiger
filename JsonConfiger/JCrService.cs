@@ -21,6 +21,112 @@ namespace JsonConfiger
 {
     public class JCrService
     {
+        private Dictionary<string, List<dynamic>> _injectedDescOjbs = new Dictionary<string, List<dynamic>>();
+
+        public void InjectDescObjs(string key, List<dynamic> descObjs)
+        {
+            _injectedDescOjbs[key] = descObjs;
+        }
+
+        /// <summary>
+        /// 和默认配置对比，如果缺失则补上
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="defaultData"></param>
+        /// <returns></returns>
+        public static JToken CheckDefault(JObject data, JObject defaultData)
+        {
+            var result = JToken.FromObject(new object());
+            if (data != null)
+                result = data.DeepClone();
+            foreach (var x in defaultData)
+            {
+                var tmpValue = result[x.Key];
+                var defaultValue = defaultData[x.Key];
+                if (tmpValue == null)
+                {
+                    result[x.Key] = defaultValue;
+                }
+                else if (!(tmpValue is JValue))
+                {
+                    result[x.Key] = CheckDefault(tmpValue as JObject, defaultValue as JObject);
+                }
+            }
+            return result;
+        }
+
+        public JsonConfierViewModel GetVM(JObject config, JObject descConfig)
+        {
+            var vm = new JsonConfierViewModel
+            {
+                Nodes = ResolveJson(config, descConfig).Nodes
+            };
+            vm.Nodes[0].Selected = true;
+            return vm;
+        }
+
+        public UserControl GetView(JObject config, JObject desc)
+        {
+            var control = new JsonConfierControl
+            {
+                DataContext = GetVM(config, desc)
+            };
+            return control;
+        }
+
+        public object GetData(ObservableCollection<CNode> nodes)
+        {
+            var result = new ExpandoObject() as IDictionary<string, object>;
+            foreach (var nodeItem in nodes)
+            {
+                var tempNodeObj = GetDataFromNode(nodeItem);
+
+                foreach (var subNode in nodeItem.Children)
+                {
+                    var subNodeObj = GetDataFromNode(subNode);
+                    tempNodeObj.Add(subNode.Name, subNodeObj);
+                }
+                result.Add(nodeItem.Name, tempNodeObj);
+            }
+            return result;
+        }
+
+        #region private
+
+        private IDictionary<string, object> GetDataFromNode(CNode nodeItem)
+        {
+            var tempNodeObj = new ExpandoObject() as IDictionary<string, object>;
+            foreach (var propertyItem in nodeItem.Properties)
+            {
+                tempNodeObj.Add(propertyItem.Name, propertyItem.Value);
+            }
+            return tempNodeObj;
+        }
+
+        private void FillObj(CBaseObj property, dynamic descInfo)
+        {
+            property.Lan = descInfo.lan;
+            property.LanKey = descInfo.lanKey;
+            property.Desc = descInfo.desc;
+            property.DescLanKey = descInfo.descLanKey;
+            property.UID = descInfo.uid;
+        }
+
+        private CProperty ConverterToNodeProperty(JValue value)
+        {
+            if (value == null)
+                return null;
+
+            CProperty result = new CProperty
+            {
+                Value = value.Value
+            };
+            bool ok = Enum.TryParse(value.Type.ToString(), out CPropertyType Type);
+            if (ok)
+                result.CType = Type;
+            return result;
+        }
+
         private (ObservableCollection<CNode> Nodes, ObservableCollection<CProperty> Properties) ResolveJson(JObject data, JObject descObj)
         {
             var childNodes = new ObservableCollection<CNode>();
@@ -33,12 +139,16 @@ namespace JsonConfiger
             {
                 if (descObj != null)
                     descInfo = descObj[x.Key];
+
+                descInfo = ConveterJnjectData(descInfo);
+
                 if (x.Value is JValue)
                 {
                     var value = x.Value as JValue;
                     CProperty property = ConverterToNodeProperty(value);
                     if (property == null)
                         continue;
+
                     if (descInfo != null)
                     {
                         bool ok = Enum.TryParse(descInfo.type.ToString(), true, out CPropertyType cType);
@@ -88,66 +198,28 @@ namespace JsonConfiger
             return (childNodes, properties);
         }
 
-        /// <summary>
-        /// 和默认配置对比，如果缺失则补上
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="defaultData"></param>
-        /// <returns></returns>
-        public static JToken CheckDefault(JObject data, JObject defaultData)
+        private dynamic ConveterJnjectData(JToken descInfo)
         {
-            var result = JToken.FromObject(new object());
-            if (data != null)
-                result = data.DeepClone();
-            foreach (var x in defaultData)
+            if (descInfo == null) return null;
+
+            foreach (JProperty item in descInfo)
             {
-                var tmpValue = result[x.Key];
-                var defaultValue = defaultData[x.Key];
-                if (tmpValue == null)
+                string tmpValue = item?.Value.ToString();
+                if (tmpValue.StartsWith("$"))
                 {
-                    result[x.Key] = defaultValue;
+                    item.Value = JToken.FromObject(_injectedDescOjbs[tmpValue]);
                 }
-                else if (!(tmpValue is JValue))
-                {
-                    result[x.Key] = CheckDefault(tmpValue as JObject, defaultValue as JObject);
-                }
+                //item.Value()
             }
-            return result;
+            //if (descInfo == null && _injectedDescOjbs.ContainsKey(x.Key))
+            //    descInfo = _injectedDescOjbs[x.Key];
+
+            return descInfo;
         }
 
-        private void FillObj(CBaseObj property, dynamic descInfo)
-        {
-            property.Lan = descInfo.lan;
-            property.LanKey = descInfo.lanKey;
-            property.Desc = descInfo.desc;
-            property.DescLanKey = descInfo.descLanKey;
-            property.UID = descInfo.uid;
-        }
+        #endregion
 
-        private CProperty ConverterToNodeProperty(JValue value)
-        {
-            if (value == null)
-                return null;
-
-            CProperty result = new CProperty
-            {
-                Value = value.Value
-            };
-            bool ok = Enum.TryParse(value.Type.ToString(), out CPropertyType Type);
-            if (ok)
-                result.CType = Type;
-            return result;
-        }
-
-        public JsonConfierViewModel GetVM(JObject config, JObject descConfig)
-        {
-            var vm = new JsonConfierViewModel
-            {
-                Nodes = ResolveJson(config, descConfig).Nodes
-            };
-            vm.Nodes[0].Selected = true;
-            return vm;
-        }
+        #region Obsolete
 
         [Obsolete]
         public JsonConfierViewModel GetVM(object config, object descConfig)
@@ -172,41 +244,6 @@ namespace JsonConfiger
             };
             return control;
         }
-
-        public UserControl GetView(JObject config, JObject desc)
-        {
-            var control = new JsonConfierControl
-            {
-                DataContext = GetVM(config, desc)
-            };
-            return control;
-        }
-
-        public object GetData(ObservableCollection<CNode> nodes)
-        {
-            var result = new ExpandoObject() as IDictionary<string, Object>;
-            foreach (var nodeItem in nodes)
-            {
-                var tempNodeObj = GetDataFromNode(nodeItem);
-
-                foreach (var subNode in nodeItem.Children)
-                {
-                    var subNodeObj = GetDataFromNode(subNode);
-                    tempNodeObj.Add(subNode.Name, subNodeObj);
-                }
-                result.Add(nodeItem.Name, tempNodeObj);
-            }
-            return result;
-        }
-
-        private IDictionary<string, Object> GetDataFromNode(CNode nodeItem)
-        {
-            var tempNodeObj = new ExpandoObject() as IDictionary<string, Object>;
-            foreach (var propertyItem in nodeItem.Properties)
-            {
-                tempNodeObj.Add(propertyItem.Name, propertyItem.Value);
-            }
-            return tempNodeObj;
-        }
+        #endregion
     }
 }

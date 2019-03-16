@@ -49,8 +49,9 @@
   },
   "setting2": {
     "test": {
-      "lan": "测试",
-      "type": "string"
+      "lan": "代码注入",
+      "type": "combobox",
+      "cbItems": "$screen"
     }
   }
 }
