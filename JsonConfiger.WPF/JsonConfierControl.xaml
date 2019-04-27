@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:JsonConfiger.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:JsonConfiger.Models"
+    x:Name="usercontrol"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    x:Name="usercontrol"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -19,15 +19,15 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="{Binding Column0Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:JsonConfierControl}}" />
+            <ColumnDefinition Width="{Binding Column1Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:JsonConfierControl}}" />
         </Grid.ColumnDefinitions>
         <TreeView
             x:Name="tree"
-            Padding="10"
-            BorderThickness="1"
-            BorderBrush="{Binding ElementName=usercontrol, Path=BorderBrush}"
             Margin="5"
+            Padding="10"
+            BorderBrush="{Binding ElementName=usercontrol, Path=BorderBrush}"
+            BorderThickness="1"
             ItemsSource="{Binding Nodes, Mode=OneWay}">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
@@ -37,7 +37,7 @@
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type models:CNode}" ItemsSource="{Binding Children}">
-                    <TextBlock ToolTip="{Binding DescLanKey}" Text="{Binding Converter={StaticResource NameConveter}}" />
+                    <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" ToolTip="{Binding DescLanKey}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>

@@ -7,19 +7,29 @@
     <local:TemplateSelector x:Key="TemplateSelector" />
     <local:NameConveter x:Key="NameConveter" />
     <local:NameConveter x:Key="DescConveter" ReadDesc="True" />
+    <Style x:Key="TextBlock_Desc" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    <Style x:Key="Element_Setting" TargetType="FrameworkElement">
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
     <DataTemplate x:Key="StringEditor">
-        <Grid Margin="0,2">
+        <Grid Margin="0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" ToolTip="{Binding Converter={StaticResource DescConveter}}">
+            <TextBlock
+                Style="{StaticResource TextBlock_Desc}"
+                Text="{Binding Converter={StaticResource NameConveter}}"
+                ToolTip="{Binding Converter={StaticResource DescConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <TextBox
                 Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
+                Style="{StaticResource Element_Setting}"
                 Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
     </DataTemplate>
@@ -30,13 +40,13 @@
                 <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" ToolTip="{Binding Converter={StaticResource DescConveter}}">
+            <TextBlock
+                Style="{StaticResource TextBlock_Desc}"
+                Text="{Binding Converter={StaticResource NameConveter}}"
+                ToolTip="{Binding Converter={StaticResource DescConveter}}">
                 <Run Text=":" />
             </TextBlock>
-            <TextBox
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center">
+            <TextBox Grid.Column="1" Style="{StaticResource Element_Setting}">
                 <Binding
                     Mode="TwoWay"
                     Path="Value"
@@ -55,13 +65,13 @@
                 <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" ToolTip="{Binding Converter={StaticResource DescConveter}}">
+            <TextBlock
+                Style="{StaticResource TextBlock_Desc}"
+                Text="{Binding Converter={StaticResource NameConveter}}"
+                ToolTip="{Binding Converter={StaticResource DescConveter}}">
                 <Run Text=":" />
             </TextBlock>
-            <TextBox
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center">
+            <TextBox Grid.Column="1" Style="{StaticResource Element_Setting}">
                 <Binding
                     Mode="TwoWay"
                     Path="Value"
@@ -91,13 +101,13 @@
                 <ColumnDefinition MaxWidth="100" SharedSizeGroup="desc" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" ToolTip="{Binding Converter={StaticResource DescConveter}}">
+            <TextBlock
+                Style="{StaticResource TextBlock_Desc}"
+                Text="{Binding Converter={StaticResource NameConveter}}"
+                ToolTip="{Binding Converter={StaticResource DescConveter}}">
                 <Run Text=":" />
             </TextBlock>
-            <TextBox
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center">
+            <TextBox Grid.Column="1" Style="{StaticResource Element_Setting}">
                 <Binding
                     Mode="TwoWay"
                     Path="Value"
@@ -118,16 +128,16 @@
             </Grid.ColumnDefinitions>
             <TextBlock
                 VerticalAlignment="Center"
+                Style="{StaticResource TextBlock_Desc}"
                 Text="{Binding Converter={StaticResource NameConveter}}"
                 ToolTip="{Binding Converter={StaticResource DescConveter}}">
                 <Run Text=":" />
             </TextBlock>
             <ComboBox
                 Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
                 ItemsSource="{Binding ItemsSource}"
-                SelectedItem="{Binding Selected, Mode=TwoWay}">
+                SelectedItem="{Binding Selected, Mode=TwoWay}"
+                Style="{StaticResource Element_Setting}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Converter={StaticResource NameConveter}}" />

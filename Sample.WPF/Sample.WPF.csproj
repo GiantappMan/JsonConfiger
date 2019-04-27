@@ -148,4 +148,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\UwpDesktop.10.0.14393.3\build\portable-net45+uap\UwpDesktop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UwpDesktop.10.0.14393.3\build\portable-net45+uap\UwpDesktop.targets'))" />
   </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties data_4test_1desc_1json__JsonSchema="http://json.schemastore.org/avro-avsc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
