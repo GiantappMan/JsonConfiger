@@ -9,6 +9,7 @@
     <local:NameConveter x:Key="DescConveter" ReadDesc="True" />
     <Style x:Key="TextBlock_Desc" TargetType="TextBlock">
         <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
     <Style x:Key="Element_Setting" TargetType="FrameworkElement">
         <Setter Property="Margin" Value="10,5" />
