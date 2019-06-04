@@ -1,7 +1,7 @@
-﻿using DZY.DotNetUtil.Helpers;
+﻿using DZY.DotNetUtil.CommonHelpers;
 using JsonConfiger;
 using JsonConfiger.Models;
-using MultiLanguageManager;
+using MultiLanguageForXAML;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
