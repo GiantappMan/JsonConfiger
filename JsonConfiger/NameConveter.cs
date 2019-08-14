@@ -1,10 +1,10 @@
 ﻿using JsonConfiger.Models;
-using MultiLanguageManager;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Windows.ApplicationModel.Resources;
+using MultiLanguageForXAML;
 
 #if WINDOWS_UWP
 using Windows.UI.Xaml.Data;
