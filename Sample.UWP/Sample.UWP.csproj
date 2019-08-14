@@ -150,6 +150,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JsonConfiger.Common\JsonConfiger.Common.csproj">
+      <Project>{0d357bd2-bd06-423a-8da7-38f348d7eaa5}</Project>
+      <Name>JsonConfiger.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JsonConfiger.UWP\JsonConfiger.UWP.csproj">
       <Project>{2e4b2f88-77df-4e3f-9bae-fcc610ad3d3d}</Project>
       <Name>JsonConfiger.UWP</Name>
