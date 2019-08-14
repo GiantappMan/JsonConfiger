@@ -2,9 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behavior="using:DZY.DotNetUtil.UWP.Behavior"
+    xmlns:behavior="using:DZY.Util.UWP.Behavior"
     xmlns:local="using:JsonConfiger"
-    xmlns:validations="using:DZY.DotNetUtil.UWP.Behavior.Validations">
+    xmlns:validations="using:DZY.Util.UWP.Behavior.Validations">
 
     <local:TemplateSelector x:Key="TemplateSelector">
         <local:TemplateSelector.DataTemplates>

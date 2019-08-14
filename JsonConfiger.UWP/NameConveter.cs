@@ -1,16 +1,8 @@
 ﻿using JsonConfiger.Models;
-using MultiLanguageManager;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using Windows.ApplicationModel.Resources;
-
-#if WINDOWS_UWP
+using MultiLanguageForXAML;
 using Windows.UI.Xaml.Data;
-#else
-using System.Windows.Data;
-#endif
 namespace JsonConfiger
 {
     public class NameConveter : IValueConverter

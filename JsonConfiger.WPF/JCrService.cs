@@ -1,20 +1,14 @@
 ﻿using JsonConfiger.Models;
 
-#if WINDOWS_UWP
-using Windows.UI.Xaml.Controls;
-using JsonConfiger.UWP;
 
-#else
 using System.Windows.Controls;
 using JsonConfiger.WPF;
-#endif
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
-using System.Text;
 
 namespace JsonConfiger
 {

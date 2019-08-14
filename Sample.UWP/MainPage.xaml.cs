@@ -1,4 +1,4 @@
-﻿using DZY.DotNetUtil.Helpers;
+﻿using DZY.Util.Common.Helpers;
 using JsonConfiger;
 using JsonConfiger.Models;
 using Newtonsoft.Json.Linq;

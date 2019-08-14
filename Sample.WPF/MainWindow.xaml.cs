@@ -1,4 +1,4 @@
-﻿using DZY.DotNetUtil.CommonHelpers;
+﻿using DZY.Util.Common.Helpers;
 using JsonConfiger;
 using JsonConfiger.Models;
 using MultiLanguageForXAML;
