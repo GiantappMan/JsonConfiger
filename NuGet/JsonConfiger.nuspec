@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>JsonConfiger</id>
-    <version>2.0.1.0</version>
+    <version>2.0.3.0</version>
     <title>JsonConfiger</title>
     <authors>MscoderStudio</authors>
     <owners>MscoderStudio</owners>
@@ -16,22 +16,32 @@
     <tags>UWP WPF JsonConfiger</tags>
     <dependencies>
       <group targetFramework="net47">
-        <dependency id="DZY.Util" version="1.0.3" />
-        <dependency id="System.ValueTuple" version="4.5.0" />
-        <dependency id="MultiLanguageForXAML" version="1.0.0.15" />
-        <dependency id="Newtonsoft.Json" version="11.0.2" />
+        <dependency id="MultiLanguageForXAML" version="2.0.2.5" />
+        <dependency id="JsonConfiger.Common" version="1.0.1" />
       </group>
+      <group targetFramework="netcoreapp3.0">
+        <dependency id="MultiLanguageForXAML" version="2.0.2.5" />
+        <dependency id="JsonConfiger.Common" version="1.0.1" />
+      </group>
+      
       <group targetFramework="uap10.0">
-        <dependency id="Newtonsoft.Json" version="11.0.2" />
         <dependency id="MultiLanguageForXAML" version="1.0.0.18" />
         <dependency id="DZY.Util" version="1.0.3" />
+        <dependency id="JsonConfiger.Common" version="1.0.1" />
+        <!--<dependency id="System.ValueTuple" version="4.5" />-->
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\JsonConfiger.WPF\bin\Debug\JsonConfiger.WPF.dll" target="lib\net46\JsonConfiger.WPF.dll" />
-    <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP.dll" target="lib\uap10.0\JsonConfiger.UWP.dll" />
-    <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP.pri" target="lib\uap10.0\JsonConfiger.UWP.pri" />
-    <file src="..\JsonConfiger.UWP\bin\Debug\JsonConfiger.UWP\" target="lib\uap10.0\JsonConfiger.UWP\" />
+    <file src="..\Output\net47\JsonConfiger.dll" target="lib\net47\JsonConfiger.dll" />
+    <file src="..\Output\net47\JsonConfiger.Common.dll" target="lib\net47\JsonConfiger.Common.dll" />
+
+    <file src="..\Output\uap10.0\JsonConfiger.dll" target="lib\uap10.0\JsonConfiger.dll" />
+    <file src="..\Output\uap10.0\JsonConfiger.pri" target="lib\uap10.0\JsonConfiger.pri" />
+    <file src="..\Output\uap10.0\JsonConfiger.Common.dll" target="lib\uap10.0\JsonConfiger.Common.dll" />
+    <file src="..\Output\uap10.0\JsonConfiger\" target="lib\uap10.0\JsonConfiger\" />
+
+    <file src="..\Output\netcoreapp3.0\JsonConfiger.dll" target="lib\netcoreapp3.0\JsonConfiger.dll" />
+    <file src="..\Output\netcoreapp3.0\JsonConfiger.Common.dll" target="lib\netcoreapp3.0\JsonConfiger.Common.dll" />
   </files>
 </package>

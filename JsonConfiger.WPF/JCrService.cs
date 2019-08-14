@@ -1,6 +1,4 @@
 ﻿using JsonConfiger.Models;
-
-
 using System.Windows.Controls;
 using JsonConfiger.WPF;
 using Newtonsoft.Json.Linq;
