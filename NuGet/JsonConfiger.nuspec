@@ -15,14 +15,14 @@
     <copyright>MscoderStudio</copyright>
     <tags>UWP WPF JsonConfiger</tags>
     <dependencies>
-      <group targetFramework="net47">
+      <!--<group targetFramework="net47">
         <dependency id="MultiLanguageForXAML" version="2.0.2.5" />
         <dependency id="JsonConfiger.Common" version="1.0.1" />
       </group>
       <group targetFramework="netcoreapp3.0">
         <dependency id="MultiLanguageForXAML" version="2.0.2.5" />
         <dependency id="JsonConfiger.Common" version="1.0.1" />
-      </group>
+      </group>-->
       
       <group targetFramework="uap10.0">
         <dependency id="MultiLanguageForXAML" version="1.0.0.18" />
@@ -33,15 +33,15 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Output\net47\JsonConfiger.dll" target="lib\net47\JsonConfiger.dll" />
-    <file src="..\Output\net47\JsonConfiger.Common.dll" target="lib\net47\JsonConfiger.Common.dll" />
+    <!--<file src="..\Output\net47\JsonConfiger.dll" target="lib\net47\JsonConfiger.dll" />
+    <file src="..\Output\net47\JsonConfiger.Common.dll" target="lib\net47\JsonConfiger.Common.dll" />-->
 
     <file src="..\Output\uap10.0\JsonConfiger.dll" target="lib\uap10.0\JsonConfiger.dll" />
     <file src="..\Output\uap10.0\JsonConfiger.pri" target="lib\uap10.0\JsonConfiger.pri" />
     <file src="..\Output\uap10.0\JsonConfiger.Common.dll" target="lib\uap10.0\JsonConfiger.Common.dll" />
     <file src="..\Output\uap10.0\JsonConfiger\" target="lib\uap10.0\JsonConfiger\" />
 
-    <file src="..\Output\netcoreapp3.0\JsonConfiger.dll" target="lib\netcoreapp3.0\JsonConfiger.dll" />
-    <file src="..\Output\netcoreapp3.0\JsonConfiger.Common.dll" target="lib\netcoreapp3.0\JsonConfiger.Common.dll" />
+    <!--<file src="..\Output\netcoreapp3.0\JsonConfiger.dll" target="lib\netcoreapp3.0\JsonConfiger.dll" />
+    <file src="..\Output\netcoreapp3.0\JsonConfiger.Common.dll" target="lib\netcoreapp3.0\JsonConfiger.Common.dll" />-->
   </files>
 </package>

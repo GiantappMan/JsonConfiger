@@ -34,5 +34,35 @@
  var descConfig = await JsonHelper.JsonDeserializeFromFileAsync<dynamic>(descPath);
  JsonConfierViewModel = _jcrService.GetVM(config, descConfig);
  ```
+## 程序动态注入数据
+```
+//.desc.json file
+  "setting2": {
+    "test": {
+      "lan": "代码注入",
+      "type": "combobox",
+      "cbItems": "$screen"
+    }
+  }
+```
+```
+//.cs file
+            List<dynamic> extraDescObjs = new List<dynamic>();
+            extraDescObjs.Add(new
+            {
+                lan = string.Format($"禁用"),
+                value = -1
+            });
+            for (int i = 0; i < System.Windows.Forms.Screen.AllScreens.Length; i++)
+            {
+                extraDescObjs.Add(new
+                {
+                    lan = string.Format($"屏幕{i}"),
+                    value = i
+                });
+            }
+
+            service.InjectDescObjs("$screen", extraDescObjs);
+```
 ## 注意事项：
 * lanKey区分大小写，定义时K不要写成小写了

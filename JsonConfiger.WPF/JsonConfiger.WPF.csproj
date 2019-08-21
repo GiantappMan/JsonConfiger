@@ -1,9 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net47</TargetFramework>
+    <TargetFrameworks>net47;netcoreapp3.0</TargetFrameworks>
+    <UseWPF>true</UseWPF>
     <AssemblyName>JsonConfiger</AssemblyName>
     <RootNamespace>JsonConfiger</RootNamespace>
+    <Version>1.0.1</Version>
+    <PackageId>JsonConfiger.WPF</PackageId>
+    <Authors>DaZiYuan</Authors>
+    <Product>巨应工作室 | GiantApp Studio</Product>
+    <Description>mscoder.cn</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,21 +29,4 @@
   </ItemGroup>
 
 
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-
-    <Page Include="**\*.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
-  </ItemGroup>
 </Project>
