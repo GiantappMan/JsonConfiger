@@ -12,7 +12,7 @@ namespace JsonConfiger
 {
     public class JCrService
     {
-        private Dictionary<string, List<dynamic>> _injectedDescOjbs = new Dictionary<string, List<dynamic>>();
+        private readonly Dictionary<string, List<dynamic>> _injectedDescOjbs = new Dictionary<string, List<dynamic>>();
 
         public void InjectDescObjs(string key, List<dynamic> descObjs)
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JsonConfiger.Models
+﻿namespace JsonConfiger.Models
 {
     public class CPropertyPDescription
     {

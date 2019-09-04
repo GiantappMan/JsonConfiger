@@ -1,8 +1,6 @@
 ﻿using JsonConfiger.Models;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using MultiLanguageForXAML;
 using System.Windows.Data;
 namespace JsonConfiger

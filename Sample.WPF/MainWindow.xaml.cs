@@ -27,9 +27,9 @@ namespace Sample.WPF
     {
         JCrService service = new JCrService();
         UserControl control;
-        string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
-        string defaultPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.default.json");
-        string descPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.desc.json");
+        readonly string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.json");
+        readonly string defaultPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.default.json");
+        readonly string descPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "test.desc.json");
         public MainWindow()
         {
             InitializeComponent();
@@ -42,8 +42,6 @@ namespace Sample.WPF
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //path = @"C:\Users\zy\AppData\Roaming\EyeNurse\Configs\setting.json";
-            //descPath = @"E:\mscoder\github\EyeNurse\EyeNurse.Client\bin\Debug\Configs\setting.desc.json";
             var data = await JsonHelper.JsonDeserializeFromFileAsync<object>(path);
             var defaultData = await JsonHelper.JsonDeserializeFromFileAsync<object>(defaultPath);
             var dataDesc = await JsonHelper.JsonDeserializeFromFileAsync<object>(descPath);
@@ -70,7 +68,6 @@ namespace Sample.WPF
 
             control = service.GetView(data as JObject, dataDesc as JObject);
             control.BorderBrush = new SolidColorBrush(Colors.Red);
-            //control = service.GetView(data, null);
 
             grid.Children.Insert(0, control);
         }
@@ -79,8 +76,7 @@ namespace Sample.WPF
         {
             var vm = control.DataContext as JsonConfierViewModel;
             var data = service.GetData(vm.Nodes);
-            var test = await JsonHelper.JsonSerializeAsync(data, path);
-            //grid.Children.RemoveAt(0);
+            _ = await JsonHelper.JsonSerializeAsync(data, path);
         }
     }
 }
