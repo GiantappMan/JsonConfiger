@@ -1,3 +1,7 @@
+# 弃更
+推荐使用船新版本： https://github.com/DaZiYuan/GiantappConfiger
+---
+
 # JsonConfiger
 根据JSON生成WPF/UWP配置界面
 
@@ -35,7 +39,7 @@
  JsonConfierViewModel = _jcrService.GetVM(config, descConfig);
  ```
 ## 程序动态注入数据
-```
+```json
 //.desc.json file
   "setting2": {
     "test": {
@@ -45,8 +49,8 @@
     }
   }
 ```
-```
 //.cs file
+```csharp
             List<dynamic> extraDescObjs = new List<dynamic>();
             extraDescObjs.Add(new
             {
